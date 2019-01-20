@@ -20,12 +20,15 @@
     function parseCSVtoJSON() {
       var csvString = document.querySelector("#csv_input").value;
 
+      csvString = csvString.replace(/2019-02-29/g, "2019-03-01");
+
       csv({
         output: "json"
       })
       .fromString(csvString)
       .then(function(result){
         var outputJSON = processRawEventJSON(result);
+        console.log(outputJSON);
         document.querySelector("#json_output").value = JSON.stringify(outputJSON);
         document.querySelector("#json_output").select();
         document.execCommand('copy');
@@ -41,11 +44,11 @@
           "location": eventJSON[i].location,
           "startTime": moment(eventJSON[i].startTime).tz("Etc/UTC").format(dateTimeOutputFormat),
           "endTime": moment(eventJSON[i].endTime).tz("Etc/UTC").format(dateTimeOutputFormat),
-          "eventTags": eventJSON[i].eventTags.split(", ")
+          "eventTags": eventJSON[i].eventTags.split(",")
         }
 
-        if (event.description == "") {
-          event.description = eventJSON[i]["internal_description"];
+        for (var k = 0; k < event.eventTags.length; k++) {
+          event.eventTags[k] = event.eventTags[k].trim().toLowerCase();
         }
 
         if (event.eventTags.indexOf("secret") == -1 && event.eventTags.indexOf("private") == -1 && event.eventTags.indexOf("cancelled") == -1) {
@@ -61,8 +64,11 @@
               event_copy.endTime = moment(endTimes[j]).tz("Etc/UTC").format(dateTimeOutputFormat);
               processedEventJSON.push(event_copy);
             }
-          } else {
+          } else if (event.startTime != "Invalid date") {
             processedEventJSON.push(event);
+          } else {
+            console.log("Found event without start time:");
+            console.log(event);
           }
         }
       }
