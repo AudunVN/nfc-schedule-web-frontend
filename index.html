@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en" >
+	<head>
+		<meta charset="UTF-8">
+		<title>sched export</title>
+		<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.css'>
+		<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick-theme.min.css'>
+		<link rel="stylesheet" href="https://www.nordicfuzzcon.org/Content/themes/2019/styles/nfc_bootstrap.min.css">
+		<link rel="stylesheet" href="styles/style.css">
+	</head>
+
+	<body>
+		<div class="schedule live">
+			<div class="row">
+				<div class="col-sm-4">
+					<div id="info-panel" class="panel panel-default">
+						<div class="panel-heading">
+						<h3 class="panel-title">Info</h3>
+						</div>
+						<div class="panel-content-wrapper">
+						<ul class="list-group">
+							<li class="list-group-item">
+								<div id="clock" class="clock text-center">loading ...</div>
+							</li>
+							<li class="list-group-item">
+								<h4 class="text-center">Timetable</h4>
+								<ul>
+									<li>Conops: 09:00-01:00</li>
+									<li>Dealer's Den: <span class="label label-danger">CLOSED TODAY</span></li>
+									<li>Art Show: <span class="label label-danger">CLOSED TODAY</span></li>
+									<li>Shuttle Bus: Every 30 minutes from 12:00</li>
+								</ul>
+							</li>
+							<li class="list-group-item" id="image-display">
+								<div class="slide-img current-img"></div>
+								<div class="slide-img next-img"></div>
+							</li>
+						</ul>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+						<h3 class="panel-title">Schedule</h3>
+						</div>
+						<div class="panel-content-wrapper">
+						<table class="table">
+							<tbody>
+								<tr class="success"><td>Opening Ceremony</td><td>Main Stage</td><td>11:00</td><td>12:00</td></tr>
+								<tr class="success"><td>This is Your First Furry Con?	</td><td>Main Stage</td><td>12:00</td><td>13:00</td></tr>
+								<tr class="success"><td>Bouncy Castles Course, Fursuiters vs Humans</td><td>Infra Gallerian</td><td>13:00</td><td>15:00</td></tr>
+								<tr><td>Meet the Charity</td><td>Main Stage</td><td>15:00</td><td>17:00</td></tr>
+								<tr><td>Fursuit Charades Sign Up	</td><td>Main Stage</td><td>16:00</td><td>17:00</td></tr>
+								<tr><td>DND Tournament</td><td>Main Stage</td><td>16:45</td><td>19:00</td></tr>
+								<tr><td>Storytellers’ Circle</td><td>Main Stage</td><td>18:00</td><td>19:00</td></tr>
+								<tr><td>Stage Anxiety, What Really Happens</td><td>Main Stage</td><td>19:00</td><td>19:45</td></tr>
+								<tr><td>Disco</td><td>Outer Goddamn Space</td><td>20:00</td><td>03:00</td></tr>
+								<tr><td>Screening of Rimba Racer</td><td>Main Stage</td><td>22:00</td><td>00:00</td></tr>
+								<tr><td>Cats and Boxes</td><td>A Big Box</td><td>04:00</td><td>06:00</td></tr>
+								<tr class="warning text-center"><td colspan=4>Tomorrow</td></tr>
+								<tr><td>Opening Ceremony</td><td>Main Stage</td><td>11:00</td><td>12:00</td></tr>
+								<tr><td>This is Your First Furry Con?	</td><td>Main Stage</td><td>12:00</td><td>13:00</td></tr>
+								<tr><td>Bouncy Castles Course, Fursuiters vs Humans</td><td>Infra Gallerian</td><td>13:00</td><td>15:00</td></tr>
+								<tr><td>Meet the Charity</td><td>Main Stage</td><td>15:00</td><td>17:00</td></tr>
+								<tr><td>Fursuit Charades Sign Up	</td><td>Main Stage</td><td>16:00</td><td>17:00</td></tr>
+								<tr><td>DND Tournament</td><td>Main Stage</td><td>16:45</td><td>19:00</td></tr>
+								<tr><td>Storytellers’ Circle</td><td>Main Stage</td><td>18:00</td><td>19:00</td></tr>
+								<tr><td>Stage Anxiety, What Really Happens</td><td>Main Stage</td><td>19:00</td><td>19:45</td></tr>
+								<tr><td>Disco</td><td>Outer Goddamn Space</td><td>20:00</td><td>03:00</td></tr>
+								<tr><td>Screening of Rimba Racer</td><td>Main Stage</td><td>22:00</td><td>00:00</td></tr>
+								<tr><td>Cats and Boxes</td><td>A Big Box</td><td>04:00</td><td>06:00</td></tr>
+							</tbody>
+						</table>
+						<a href="#" id="schedule-btn" class="btn btn-primary">View Full Schedule</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+						<h3 class="panel-title">Announcements</h3>
+						</div>
+						<div class="panel-content-wrapper">
+						<div class="panel-body">
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+							<h3 class="panel-title">Telegram - one hour ago</h3>
+							</div>
+							<div class="panel-body">
+										The NordicFuzzCon Android app for 2018 is now live! Get easy access to the schedule of events, maps, useful links, and more!
+							</div>
+						</div>
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+							<h3 class="panel-title">Twitter - three hours ago</h3>
+							</div>
+							<div class="panel-body">
+										The hotel created a delicious looking pasta buffet in the restaurant. Both vegan/vegetarian and none vegetarian pasta for 85 SEK.
+							</div>
+						</div>
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+							<h3 class="panel-title">Twitter - six hours ago</h3>
+							</div>
+							<div class="panel-body">
+										Having problems with your flight? If you can't get to Stockholm directly, remember that there may be more possibilities from Copenhagen (Denmark) and Oslo (Norway) – including train.
+							</div>
+						</div>
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+							<h3 class="panel-title">Opening Ceremony</h3>
+							</div>
+							<div class="panel-body">
+										12:00-13:00, Main Stage
+							</div>
+						</div>
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+							<h3 class="panel-title">Opening Ceremony</h3>
+							</div>
+							<div class="panel-body">
+										12:00-13:00, Main Stage
+							</div>
+						</div>
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+							<h3 class="panel-title">Opening Ceremony</h3>
+							</div>
+							<div class="panel-body">
+										12:00-13:00, Main Stage
+							</div>
+						</div>
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+							<h3 class="panel-title">Opening Ceremony</h3>
+							</div>
+							<div class="panel-body">
+										12:00-13:00, Main Stage
+							</div>
+						</div>
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+							<h3 class="panel-title">Opening Ceremony</h3>
+							</div>
+							<div class="panel-body">
+										12:00-13:00, Main Stage
+							</div>
+						</div>
+						</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="scroller" class="panel text-center">
+				<div class="scroll-content">
+					<h3>Welcome to NordicFuzzCon 2019!</h3>
+				</div>
+				<div class="scroll-content">
+					<h3>1L1K35CH3DUL35</h3>
+				</div>
+				<div class="scroll-content">
+					<h3>Some player scored 9999 in the game</h3>
+				</div>
+				<div class="scroll-content">
+					<h3>Remember to check out something! I don't know.</h3>
+				</div>
+				<div class="scroll-content">
+					<h3>Want your image to appear here? Send it to @somebody</h3>
+				</div>
+			</div>
+		</div>
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.1.0/moment.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/FitText.js/1.1/jquery.fittext.min.js"></script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.js'></script>
+		<script src='https://www.nordicfuzzcon.org/static/js/Chart.min.js'></script>
+		<script  src="scripts/index.js"></script>
+	</body>
+</html>
