@@ -1,6 +1,6 @@
 #schedule-output-container .table .tag_main,
 #schedule-output-container .table .tag_operations {
-	display: none;
+	display: none !important;
 }
 
 #schedule-output-container .table tr {
@@ -34,7 +34,7 @@
 
 #schedule-output-container .table .registrationEvent .event-tag-container,
 #schedule-output-container .table .conOpsEvent .event-tag-container {
-	display: none;
+	display: none !important;
 }
 
 #schedule-output-container .event-tag-container {
@@ -58,7 +58,6 @@
 		display: block;
 		margin-left: 0em;
 		margin-top: 0em;
-
 	}
 
 	#schedule-output-container .event-tag-container .label {
