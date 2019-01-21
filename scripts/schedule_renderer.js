@@ -221,6 +221,7 @@ function initializeFiltering(events) {
 }
 
 function search(input, day, category) {
+	console.log({input, day, category});
 	if (day != "all") {
 		$(".day-table").not(".day-" + day).addClass("hidden hidden_day");
 		$(".day-" + day).removeClass("hidden hidden_day");
@@ -231,7 +232,7 @@ function search(input, day, category) {
 	}
 
 	if (category != "all") {
-		$(".day-table tr").not(".event_" + day).addClass("hidden hidden_category");
+		$(".day-table tr").not(".event_" + category).addClass("hidden hidden_category");
 		$(".day-table tr.event_" + category).removeClass("hidden hidden_category");
 		window.history.replaceState({}, document.title, setUrlParameter(window.location.href, "category", category));
 	} else {
@@ -248,17 +249,13 @@ function search(input, day, category) {
 		window.history.replaceState({}, document.title, setUrlParameter(window.location.href, "search", ""));
 	}
 
-	$(".day-table.table-striped").removeClass("table-striped");
-
-	$(".day-table tr:visible").each(function(index) {
-		$(this).toggleClass("striped", !!(index & 1));
-	});
-
 	$(".day-title").each(function(index, title) {
-		if ($(title).next(".day-table").find("tr:visible").size() == 0) {
+		if ($(title).next(".day-table:not(.hidden_day)").find("tr:not(.hidden_category,.hidden_search)").size() == 0) {
 			$(title).addClass("hidden");
+			$(title).next(".day-table").addClass("hidden");
 		} else {
 			$(title).removeClass("hidden");
+			$(title).next(".day-table").removeClass("hidden");
 		}
 	});
 
@@ -267,6 +264,30 @@ function search(input, day, category) {
 	} else {
 		$("#no-results-msg").addClass("hidden");
 	}
+
+	setTimeout(function() {
+		$(".day-title").each(function(index, title) {
+			if ($(title).next(".day-table:not(.hidden_day)").find("tr:not(.hidden_category,.hidden_search)").size() == 0) {
+				$(title).addClass("hidden");
+				$(title).next(".day-table").addClass("hidden");
+			} else {
+				$(title).removeClass("hidden");
+				$(title).next(".day-table").removeClass("hidden");
+			}
+		});
+
+		if ($(".day-table tr:visible").size() == 0) {
+			$("#no-results-msg").removeClass("hidden");
+		} else {
+			$("#no-results-msg").addClass("hidden");
+		}
+
+		$(".day-table.table-striped").removeClass("table-striped");
+
+		$(".day-table tr:visible").each(function(index) {
+			$(this).toggleClass("striped", !!(index & 1));
+		});
+	}, 0);
 }
 
 function getEventClasses(event) {
