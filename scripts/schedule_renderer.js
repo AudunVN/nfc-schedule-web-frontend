@@ -79,6 +79,29 @@ function renderSchedule(events) {
 	}
 	$(scheduleContainerSelector).append(currentTable);
 	initializeFiltering(events);
+
+	var currentUrl = window.location.href;
+
+	var urlSearch = getUrlParameter(currentUrl, "search");
+	var urlDay = getUrlParameter(currentUrl, "day");
+	var urlCategory = getUrlParameter(currentUrl, "category");
+
+	if (urlSearch || urlDay || urlCategory) {
+		if (urlSearch) {
+			$('#event-search-input').val(urlSearch);
+			currentSearch = urlSearch;
+		}
+		if (urlDay) {
+			$(".day-options-container label #day_" + urlDay).click();
+			selectedDay = urlDay;
+		}
+		if (urlCategory) {
+			$(".category-options-container label #category_" + urlCategory).click();
+			selectedCategory = urlCategory;
+		}
+		search(currentSearch, selectedDay, selectedCategory);
+	}
+
 	$("#schedule-loader").addClass("hidden");
 	$(scheduleContainerSelector).removeClass("hidden");
 }
@@ -115,6 +138,9 @@ function initializeFiltering(events) {
 				'<i class="fa fa-search"></i>' +
 			'</div>' +
 			'<input class="form-control" type="text" id="event-search-input" name="Search" placeholder="Search..." maxlength="30">' +
+			'<span class="input-group-btn">' +
+				'<button class="btn btn-warning clear-search" type="button">Reset</button>' +
+			'</span>' +
 		'</div>' +
 	'</div>';
 	
@@ -167,7 +193,7 @@ function initializeFiltering(events) {
 	'</div>';
 	
 	$(scheduleContainerSelector).prepend("<div class='well'>" + searchInput  + dayFilter + tagFilter + "</div>"); /* tag filter */
-	$(scheduleContainerSelector).append('<div class="text-center hidden" id="no-results-msg"><h4>No events found</h4><button class="btn btn-info clear-search" type="button">Reset search</button></div>');
+	$(scheduleContainerSelector).append('<div class="text-center hidden" id="no-results-msg"><h4>No events found</h4><button class="btn btn-warning clear-search" type="button">Reset search</button></div>');
 
 	$(".category-options-container label").click(function(e){
 		selectedCategory = $(this).find("input").attr("id").split("category_")[1];
@@ -181,6 +207,11 @@ function initializeFiltering(events) {
 		$("#day_all").click();
 		$("#category_all").click();
 		$('#event-search-input').val("");
+
+		currentSearch = "";
+		selectedDay = "all";
+		selectedCategory = "all";
+
 		search(currentSearch, selectedDay, selectedCategory);
 	});
 	$('#event-search-input').on('input', function() {
@@ -193,22 +224,30 @@ function search(input, day, category) {
 	if (day != "all") {
 		$(".day-table").not(".day-" + day).addClass("hidden hidden_day");
 		$(".day-" + day).removeClass("hidden hidden_day");
+		window.history.replaceState({}, document.title, setUrlParameter(window.location.href, "day", day));
 	} else {
 		$(".day-table.hidden_day").removeClass("hidden hidden_day");
+		window.history.replaceState({}, document.title, setUrlParameter(window.location.href, "day", ""));
 	}
 
 	if (category != "all") {
+		console.log(category);
 		$(".day-table tr").not(".event_" + day).addClass("hidden hidden_category");
 		$(".day-table tr.event_" + category).removeClass("hidden hidden_category");
+		window.history.replaceState({}, document.title, setUrlParameter(window.location.href, "category", category));
 	} else {
 		$(".day-table tr.hidden_category").removeClass("hidden hidden_category");
+		window.history.replaceState({}, document.title, setUrlParameter(window.location.href, "category", ""));
 	}
 
 	if (input != "") {
+		console.log(input);
 		$(".day-table tr").not("tr:icontains('" + input + "')").addClass("hidden hidden_search");
 		$(".day-table tr:icontains('" + input + "')").not(".hidden_category").removeClass("hidden hidden_search");
+		window.history.replaceState({}, document.title, setUrlParameter(window.location.href, "search", input));
 	} else {
 		$(".day-table tr.hidden_search").not(".hidden_category").removeClass("hidden hidden_search");
+		window.history.replaceState({}, document.title, setUrlParameter(window.location.href, "search", ""));
 	}
 
 	$(".day-table.table-striped").removeClass("table-striped");
