@@ -74,6 +74,8 @@ function renderSchedule(events) {
 	}
 	$(scheduleContainerSelector).append(currentTable);
 	initializeFiltering(events);
+	$("#schedule-loader").addClass("hidden");
+	$(scheduleContainerSelector).removeClass("hidden");
 }
 
 function getAllTags(events) {
@@ -178,10 +180,10 @@ function initializeFiltering(events) {
 
 function search(input, day, category) {
 	if (day != "all") {
-		$(".day-title, .day-table").not(".day-" + day).addClass("hidden hidden_day");
+		$(".day-table").not(".day-" + day).addClass("hidden hidden_day");
 		$(".day-" + day).removeClass("hidden hidden_day");
 	} else {
-		$(".day-title.hidden_day, .day-table.hidden_day").removeClass("hidden hidden_day");
+		$(".day-table.hidden_day").removeClass("hidden hidden_day");
 	}
 
 	if (category != "all") {
@@ -202,6 +204,14 @@ function search(input, day, category) {
 
 	$(".day-table tr:visible").each(function(index) {
 		$(this).toggleClass("striped", !!(index & 1));
+	});
+
+	$(".day-title").each(function(index, title) {
+		if ($(title).next(".day-table").find("tr:visible").size() == 0) {
+			$(title).addClass("hidden");
+		} else {
+			$(title).removeClass("hidden");
+		}
 	});
 }
 
