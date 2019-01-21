@@ -22,6 +22,10 @@
 
       csvString = csvString.replace(/2019-02-29/g, "2019-03-01");
 
+      csvString = csvString.substring(csvString.indexOf("\n") + 1);
+
+      csvString = 'lastUpdate,Email address,The submission form should not be finalised now,title,NFC event staff liaison,Ticket(s),Status,Event holder(s) badge names(s),Event holder(s) badge number(s),Telegram user(s),Other means of contact, [Before the con starts], [Tuesday 26 Feb], [Wednesday 27 Feb (Opening Ceremony)], [Thursday 28 Feb], [Friday 1 Mar], [Saturday 2 Mar], [Sunday 3 Mar (Closing Ceremony)], [After con is over],internal_description,Setup/Teardown time,Size,AV equipment,Other equipment,Fursuiting,Security,Medic,description,"Comments, questions and/or further info",Feedback,Media,SOUP,,Edit URL,Order number,location,Setup time,startTime,endTime,Teardown time,Internal comments,Event holders,Attending,Clearance,eventTags\n' + csvString;
+
       csv({
         output: "json"
       })
@@ -50,8 +54,12 @@
         for (var k = 0; k < event.eventTags.length; k++) {
           event.eventTags[k] = event.eventTags[k].trim().toLowerCase();
         }
-
-        if (event.eventTags.indexOf("secret") == -1 && event.eventTags.indexOf("private") == -1 && event.eventTags.indexOf("cancelled") == -1) {
+        console.log(event.title);
+        if (event.eventTags.indexOf("secret") == -1
+            && event.eventTags.indexOf("private") == -1
+            && event.eventTags.indexOf("cancelled") == -1
+            && event.title != "STEW briefing"
+            && event.title != "First Aid Course") {
           /* events with these tags should not be included in the schedule */
           if (event.startTime == "Invalid date" && ((eventJSON[i].startTime || '').match(timeRegex) || []).length > 1) {
             /* event has multiple start/end times, create copies for each time */

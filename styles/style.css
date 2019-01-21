@@ -5,16 +5,50 @@
 
 #schedule-output-container .table tr {
 	cursor: pointer;
+	font-size: 1.15em;
 }
 
 #schedule-output-container .table td:nth-child(1) {
 	width: 70%;
+	vertical-align: middle;
 }
 
 #schedule-output-container .table td:nth-child(2) {
 	width: 13%;
+	vertical-align: middle;
 }
 
 #schedule-output-container .table td:nth-child(3) {
 	width: 17%;
+	vertical-align: middle;
+}
+
+.striped {
+	background: rgba(255,255,255,.9);
+}
+
+#schedule-output-container .table .registrationEvent,
+#schedule-output-container .table .conOpsEvent {
+	color: white;
+}
+
+#schedule-output-container .table .registrationEvent .event-tag-container,
+#schedule-output-container .table .conOpsEvent .event-tag-container {
+	display: none;
+}
+
+#schedule-output-container .event-tag-container {
+	margin-left: 0.3em;
+}
+
+#schedule-output-container .event-tag-container .label {
+    vertical-align: 0.1em;
+}
+
+@media only screen and (max-width: 60em) {
+	#schedule-output-container .event-tag-container {
+		display: block;
+		margin-left: 0em;
+		margin-top: 0.25em;
+	}
 }
