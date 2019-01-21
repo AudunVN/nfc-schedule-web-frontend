@@ -10,19 +10,24 @@ var apiKey = "";
 
 /* used to add Font Awesome icons for each event tag */
 var eventTagIcons = {
-	"excursion": "bus",
-	"food": "cutlery",
-	"meet_and_greet": "handshake-o",
-	"panel": "comments-o",
-	"theme": "snowflake-o",
-	"music": "music",
-	"guest_of_honor": "star",
-	"northern_light": "star",
-	"shopping": "shopping-bag",
-	"charity": "ambulance",
-	"photo": "camera-retro",
-	"art": "picture-o",
-	"fursuit": "paw"
+	"excursion": "fa fa-bus",
+	"food": "fa fa-cutlery",
+	"meet_and_greet": "fa fa-handshake-o",
+	"panel": "fa fa-comments-o",
+	"theme": "fa fa-snowflake-o",
+	"music": "fa fa-music",
+	"guest_of_honor": "fa fa-star",
+	"northern_light": "fa fa-star",
+	"shopping": "fa fa-shopping-bag",
+	"charity": "fa fa-ambulance",
+	"photo": "fa fa-camera-retro",
+	"art": "fa fa-picture-o",
+	"fursuit": "fa fa-paw",
+	"dance": "icons8-dancing",
+	"gaming": "icons8-dice",
+	"performance": "icons8-dynamic-microphone",
+	"competition": "icons8-game-position",
+	"party": "icons8-party-balloons",
 }
 
 var iconPrefix = '<span class="label label-primary" aria-hidden="true">';
@@ -119,18 +124,18 @@ function initializeFiltering(events) {
 	'<div class="form-group">' +
 		'<label class="control-label" for="event-filter-input">Category </label>' +
 		'<div class="btn-container category-options-container" data-toggle="buttons">' +
-		'<label class="btn btn-primary btn-sm active">' +
+		'<label class="btn btn-primary no-fullwidth-btn btn-sm active">' +
 			'<input type="radio" name="filter-options" id="category_all" autocomplete="off" checked> All categories' +
 		'</label> ';
 		for (var i = 0; i < tagArray.length; i++) {
 			if (tagArray[i] != "operations" && tagArray[i] != "main" ) {
 				var tagIcon = "";
 				if (eventTagIcons.hasOwnProperty(tagArray[i])) {
-					tagIcon = '<i class="fa fa-' + eventTagIcons[tagArray[i]] + '" aria-hidden="true"></i> ';
+					tagIcon = '<i class="' + eventTagIcons[tagArray[i]] + '" aria-hidden="true"></i> ';
 				}
 				var tag = tagArray[i].charAt(0).toUpperCase() + tagArray[i].slice(1);
 				tagFilter += '' +
-				'<label class="btn btn-primary btn-sm">' +
+				'<label class="btn btn-primary no-fullwidth-btn btn-sm">' +
 					tagIcon +
 					'<input type="radio" name="filter-options" id="category_' + tagArray[i] + '" autocomplete="off">' +
 					tag.replace(/_/g, " ") + 
@@ -141,18 +146,18 @@ function initializeFiltering(events) {
 		'</div>' +
 	'</div>';
 	
-
+		
 	var dayArray = getAllDays(events);
 	var dayFilter = '' +
 	'<div class="form-group">' +
 		'<label class="control-label" for="event-filter-input">Day </label>' +
 		'<div class="btn-container day-options-container" data-toggle="buttons">' +
-		'<label class="btn btn-primary btn-sm active">' +
+		'<label class="btn btn-primary no-fullwidth-btn btn-sm active">' +
 			'<input type="radio" name="filter-day" id="day_all" autocomplete="off" checked> All days' +
 		'</label> ';
 		for (var i = 0; i < dayArray.length; i++) {
 			dayFilter += '' +
-			'<label class="btn btn-primary btn-sm">' +
+			'<label class="btn btn-primary no-fullwidth-btn btn-sm">' +
 				'<input type="radio" name="filter-day" id="day_' + dayArray[i].toLowerCase() + '" autocomplete="off">' +
 				dayArray[i] + 
 			'</label> ';
@@ -162,7 +167,7 @@ function initializeFiltering(events) {
 	'</div>';
 	
 	$(scheduleContainerSelector).prepend("<div class='well'>" + searchInput  + dayFilter + tagFilter + "</div>"); /* tag filter */
-
+	$(scheduleContainerSelector).append('<div class="text-center hidden" id="no-results-msg"><h4>No events found</h4><button class="btn btn-info clear-search" type="button">Reset search</button></div>');
 
 	$(".category-options-container label").click(function(e){
 		selectedCategory = $(this).find("input").attr("id").split("category_")[1];
@@ -170,6 +175,12 @@ function initializeFiltering(events) {
 	});
 	$(".day-options-container label").click(function(e){
 		selectedDay = $(this).find("input").attr("id").split("day_")[1];
+		search(currentSearch, selectedDay, selectedCategory);
+	});
+	$(scheduleContainerSelector + " .clear-search").click(function(e){
+		$("#day_all").click();
+		$("#category_all").click();
+		$('#event-search-input').val("");
 		search(currentSearch, selectedDay, selectedCategory);
 	});
 	$('#event-search-input').on('input', function() {
@@ -213,6 +224,14 @@ function search(input, day, category) {
 			$(title).removeClass("hidden");
 		}
 	});
+
+	$(".day-title").each(function(index, title) {
+		if ($(".day-table tr:visible").size() == 0) {
+			$("#no-results-msg").removeClass("hidden");
+		} else {
+			$("#no-results-msg").addClass("hidden");
+		}
+	});
 }
 
 function getEventClasses(event) {
@@ -245,7 +264,7 @@ function renderTagsToLabels(tagArray) {
 
 			/* add custom icons for each event category */
 			if (eventTagIcons.hasOwnProperty(tagArray[i])) {
-				tagsString += iconPrefix + '<i class="fa fa-' + eventTagIcons[tagArray[i]] + '" aria-hidden="true"></i>' + iconSuffix;
+				tagsString += iconPrefix + '<i class="' + eventTagIcons[tagArray[i]] + '" aria-hidden="true"></i>' + iconSuffix;
 				classString += " sr-only";
 			}
 			
@@ -264,7 +283,7 @@ function eventToHtml(event) {
 	
 	var eventHTML = "<tr>" + 
 	"<td>"  + event.title + " " + renderTagsToLabels(event.eventTags) + "</td>" +
-	"<td>" + moment(event.startTime).tz(timezone).format("HH:mm") + " - " + moment(event.endTime).tz(timezone).format("HH:mm") + "</td>" +
+	"<td>" + moment(event.startTime).tz(timezone).format("HH:mm") + "<span class='separator-desktop'> - </span><span class='separator-mobile'><br></span>" + moment(event.endTime).tz(timezone).format("HH:mm") + "</td>" +
 	"<td>" + locationString + "</td>";
 	return eventHTML;
 }

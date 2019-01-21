@@ -45,10 +45,42 @@
     vertical-align: 0.1em;
 }
 
+#schedule-output-container .separator-mobile {
+	display: none;
+}
+
+#schedule-output-container .separator-desktop {
+	display: inline;
+}
+
 @media only screen and (max-width: 60em) {
 	#schedule-output-container .event-tag-container {
 		display: block;
 		margin-left: 0em;
+		margin-top: 0em;
+
+	}
+
+	#schedule-output-container .event-tag-container .label {
+		display: inline-block;
+		height: 100%;
+		padding: 0.5em;
 		margin-top: 0.25em;
+	}
+
+	#schedule-output-container .table td:nth-child(1) {
+		width: 55%;
+	}
+	
+	#schedule-output-container .table td:nth-child(2) {
+		width: 28%;
+	}
+
+	#schedule-output-container .separator-mobile {
+		display: inline;
+	}
+
+	#schedule-output-container .separator-desktop {
+		display: none;
 	}
 }
