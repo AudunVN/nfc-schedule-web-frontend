@@ -80,28 +80,6 @@ function renderSchedule(events) {
 	$(scheduleContainerSelector).append(currentTable);
 	initializeFiltering(events);
 
-	var currentUrl = window.location.href;
-
-	var urlSearch = getUrlParameter(currentUrl, "search");
-	var urlDay = getUrlParameter(currentUrl, "day");
-	var urlCategory = getUrlParameter(currentUrl, "category");
-
-	if (urlSearch || urlDay || urlCategory) {
-		if (urlSearch) {
-			$('#event-search-input').val(urlSearch);
-			currentSearch = urlSearch;
-		}
-		if (urlDay) {
-			$(".day-options-container label #day_" + urlDay).click();
-			selectedDay = urlDay;
-		}
-		if (urlCategory) {
-			$(".category-options-container label #category_" + urlCategory).click();
-			selectedCategory = urlCategory;
-		}
-		search(currentSearch, selectedDay, selectedCategory);
-	}
-
 	$("#schedule-loader").addClass("hidden");
 	$(scheduleContainerSelector).removeClass("hidden");
 }
@@ -195,6 +173,28 @@ function initializeFiltering(events) {
 	$(scheduleContainerSelector).prepend("<div class='well'>" + searchInput  + dayFilter + tagFilter + "</div>"); /* tag filter */
 	$(scheduleContainerSelector).append('<div class="text-center hidden" id="no-results-msg"><h4>No events found</h4><button class="btn btn-warning clear-search" type="button">Reset search</button></div>');
 
+	var currentUrl = window.location.href;
+
+	var urlSearch = getUrlParameter(currentUrl, "search");
+	var urlDay = getUrlParameter(currentUrl, "day");
+	var urlCategory = getUrlParameter(currentUrl, "category");
+
+	if (urlSearch || urlDay || urlCategory) {
+		if (urlSearch) {
+			$('#event-search-input').val(urlSearch);
+			currentSearch = urlSearch;
+		}
+		if (urlDay) {
+			$(".day-options-container label #day_" + urlDay).click();
+			selectedDay = urlDay;
+		}
+		if (urlCategory) {
+			$(".category-options-container label #category_" + urlCategory).click();
+			selectedCategory = urlCategory;
+		}
+		search(currentSearch, selectedDay, selectedCategory);
+	}
+
 	$(".category-options-container label").click(function(e){
 		selectedCategory = $(this).find("input").attr("id").split("category_")[1];
 		search(currentSearch, selectedDay, selectedCategory);
@@ -231,7 +231,6 @@ function search(input, day, category) {
 	}
 
 	if (category != "all") {
-		console.log(category);
 		$(".day-table tr").not(".event_" + day).addClass("hidden hidden_category");
 		$(".day-table tr.event_" + category).removeClass("hidden hidden_category");
 		window.history.replaceState({}, document.title, setUrlParameter(window.location.href, "category", category));
@@ -241,7 +240,6 @@ function search(input, day, category) {
 	}
 
 	if (input != "") {
-		console.log(input);
 		$(".day-table tr").not("tr:icontains('" + input + "')").addClass("hidden hidden_search");
 		$(".day-table tr:icontains('" + input + "')").not(".hidden_category").removeClass("hidden hidden_search");
 		window.history.replaceState({}, document.title, setUrlParameter(window.location.href, "search", input));
@@ -264,13 +262,11 @@ function search(input, day, category) {
 		}
 	});
 
-	$(".day-title").each(function(index, title) {
-		if ($(".day-table tr:visible").size() == 0) {
-			$("#no-results-msg").removeClass("hidden");
-		} else {
-			$("#no-results-msg").addClass("hidden");
-		}
-	});
+	if ($(".day-table tr:visible").size() == 0) {
+		$("#no-results-msg").removeClass("hidden");
+	} else {
+		$("#no-results-msg").addClass("hidden");
+	}
 }
 
 function getEventClasses(event) {
