@@ -1,3 +1,7 @@
+.day-table:last-of-type {
+    margin-bottom: 0;
+}
+
 #schedule-output-container .table .tag_main,
 #schedule-output-container .table .tag_operations {
 	display: none !important;
