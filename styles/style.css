@@ -53,6 +53,14 @@
 	display: inline;
 }
 
+#schedule-output-container .table td:nth-child(1) .event-tag-container {
+	display: inline;
+}
+
+#schedule-output-container .table td:nth-child(2) .event-tag-container {
+	display: none;
+}
+
 @media only screen and (max-width: 60em) {
 	#schedule-output-container .event-tag-container .label {
 		display: inline-block;
@@ -77,6 +85,14 @@
 	}
 
 	#schedule-output-container .separator-desktop {
+		display: inline;
+	}
+
+	#schedule-output-container .table td:nth-child(1) .event-tag-container {
+		display: none;
+	}
+	
+	#schedule-output-container .table td:nth-child(2) .event-tag-container {
 		display: inline;
 	}
 }

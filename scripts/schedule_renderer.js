@@ -339,7 +339,7 @@ function eventToHtml(event) {
 	
 	var eventHTML = "<tr>" + 
 	"<td>"  + event.title + " " + renderTagsToLabels(event.eventTags) + "</td>" +
-	"<td>" + moment(event.startTime).tz(timezone).format("HH:mm") + "<span class='separator-desktop'> - </span><span class='separator-mobile'><br></span>" + moment(event.endTime).tz(timezone).format("HH:mm") + "</td>" +
+	"<td>" + moment(event.startTime).tz(timezone).format("HH:mm") + "<span class='separator-desktop'> - </span><span class='separator-mobile'><br></span>" + moment(event.endTime).tz(timezone).format("HH:mm") + " " + renderTagsToLabels(event.eventTags) +  "</td>" +
 	"<td>" + locationString + "</td>";
 	return eventHTML;
 }
