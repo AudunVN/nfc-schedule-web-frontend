@@ -90,8 +90,10 @@
 
 
 	#schedule-output-container .table td:nth-child(3) {
-		width: 25%;
+		width: 33%;
 		vertical-align: middle;
+		text-align: center;
+		font-size: 0.95em;
 	}
 
 	#schedule-output-container .separator-mobile {
