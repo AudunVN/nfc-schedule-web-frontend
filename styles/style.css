@@ -75,6 +75,15 @@
 		width: 100%;
 	}
 
+	#schedule-output-container .table td:nth-child(1) {
+		padding-bottom: 0.1em;
+	}
+
+	#schedule-output-container .table td:nth-child(2) {
+		padding-top: 0.1em;
+	}
+
+
 	#schedule-output-container .table td:nth-child(3) {
 		width: 20%;
 		vertical-align: middle;
@@ -94,5 +103,6 @@
 	
 	#schedule-output-container .table td:nth-child(2) .event-tag-container {
 		display: inline;
+		margin-left: 0.25em;
 	}
 }
