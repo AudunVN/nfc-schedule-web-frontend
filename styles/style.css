@@ -2,8 +2,7 @@
     margin-bottom: 0;
 }
 
-#schedule-output-container .table .tag_main,
-#schedule-output-container .table .tag_operations {
+#schedule-output-container .table .tag_main {
 	display: none !important;
 }
 
@@ -20,6 +19,7 @@
 #schedule-output-container .table td:nth-child(2) {
 	width: 13%;
 	vertical-align: middle;
+	color: #404040;
 }
 
 #schedule-output-container .table td:nth-child(3) {
@@ -28,17 +28,18 @@
 }
 
 .striped {
-	background: rgba(255,255,255,.9);
+	background: #e9f4fb;
 }
 
 #schedule-output-container .table .registrationEvent,
-#schedule-output-container .table .conOpsEvent {
+#schedule-output-container .table .conOpsEvent,
+#schedule-output-container .table .registrationEvent td:nth-child(2),
+#schedule-output-container .table .conOpsEvent td:nth-child(2) {
 	color: white;
 }
 
-#schedule-output-container .table .registrationEvent .event-tag-container,
-#schedule-output-container .table .conOpsEvent .event-tag-container {
-	display: none !important;
+#schedule-output-container .table .registrationEvent .label {
+    background: hsl(204, 67%, 44%);
 }
 
 #schedule-output-container .event-tag-container {
@@ -80,7 +81,7 @@
 	}
 
 	#schedule-output-container .table td:nth-child(1) {
-		padding-top: 0.1em;
+		padding-top: 0.35em;
 		padding-bottom: 0.1em;
 	}
 
@@ -90,7 +91,7 @@
 
 
 	#schedule-output-container .table td:nth-child(3) {
-		width: 33%;
+		width: 32%;
 		vertical-align: middle;
 		text-align: center;
 		font-size: 0.95em;

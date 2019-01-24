@@ -28,6 +28,7 @@ var eventTagIcons = {
 	"performance": "icons8-dynamic-microphone",
 	"competition": "icons8-game-position",
 	"party": "icons8-party-balloons",
+	"operations": "icons8-clipboard-checklist",
 }
 
 var iconPrefix = '<span class="label label-primary" aria-hidden="true">';
@@ -79,6 +80,12 @@ function renderSchedule(events) {
 	}
 	$(scheduleContainerSelector).append(currentTable);
 	initializeFiltering(events);
+
+	$(".day-table.table-striped").removeClass("table-striped");
+
+	$(".day-table tr").each(function(index) {
+		$(this).toggleClass("striped", !!(index & 1));
+	});
 
 	$("#schedule-loader").addClass("hidden");
 	$(scheduleContainerSelector).removeClass("hidden");
@@ -132,7 +139,7 @@ function initializeFiltering(events) {
 			'<input type="radio" name="filter-options" id="category_all" autocomplete="off" checked> All categories' +
 		'</label> ';
 		for (var i = 0; i < tagArray.length; i++) {
-			if (tagArray[i] != "operations" && tagArray[i] != "main" ) {
+			if (tagArray[i] != "main" ) {
 				var tagIcon = "";
 				if (eventTagIcons.hasOwnProperty(tagArray[i])) {
 					tagIcon = '<i class="' + eventTagIcons[tagArray[i]] + '" aria-hidden="true"></i> ';
