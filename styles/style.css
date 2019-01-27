@@ -114,3 +114,33 @@
 		margin-left: 0.25em;
 	}
 }
+
+#sub-page main > .container {
+	overflow-y: hidden;
+}
+
+.tooltip-inner {
+    background: #64b3e8;
+    color: white;
+    box-shadow: 0 0 0.2em 0 rgba(0,0,0,0.5);
+}
+
+.tooltip.fade.in {
+	opacity: 1;
+}
+
+.tooltip.top .tooltip-arrow {
+	border-top-color: #64b3e8;
+}
+
+.tooltip.bottom .tooltip-arrow {
+	border-bottom-color: #64b3e8;
+}
+
+.tooltip.left .tooltip-arrow {
+	border-left-color: #64b3e8;
+}
+
+.tooltip.right .tooltip-arrow {
+	border-right-color: #64b3e8;
+}

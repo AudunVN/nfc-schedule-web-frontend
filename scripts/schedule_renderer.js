@@ -31,9 +31,6 @@ var eventTagIcons = {
 	"operations": "icons8-clipboard-checklist",
 }
 
-var iconPrefix = '<span class="label label-primary" aria-hidden="true">';
-var iconSuffix = '</span>';
-
 var currentSearch = "";
 var selectedDay = "all";
 var selectedCategory = "all";
@@ -70,6 +67,10 @@ function renderSchedule(events) {
 			"<h4>Start time</h4><p>" + moment(event.startTime).tz(timezone).format("dddd[, ]HH:mm")  + "</p>" +
 			"<h4>End time</h4><p>" + moment(event.endTime).tz(timezone).format("dddd[, ]HH:mm")  + "</p>" + 
 			"<h4>Location</h4><p>" + event.location  + "</p>";
+			if (event.eventTags && event.eventTags.length > 0) {
+				
+				dialogContents += "<h4>Categories</h4><p>" + renderTagsToLabels(event.eventTags, true)  + "</p>";
+			}
 			if (event.description != "" && event.description.length > 5) {
 				dialogContents += "<h4>Description</h4><p style='white-space: pre-wrap;'>" + event.description  + "</p>";
 			}
@@ -86,6 +87,16 @@ function renderSchedule(events) {
 	$(".day-table tr").each(function(index) {
 		$(this).toggleClass("striped", !!(index & 1));
 	});
+
+	$(".event-tag-container .label").each(function(index) {
+		$(this).attr("data-toggle", "tooltip");
+		$(this).attr("title", $(this).text());
+		$(this).tooltip({
+			placement: 'top',
+		});
+	});
+
+	$('[data-toggle="tooltip"]') 
 
 	$("#schedule-loader").addClass("hidden");
 	$(scheduleContainerSelector).removeClass("hidden");
@@ -228,7 +239,6 @@ function initializeFiltering(events) {
 }
 
 function search(input, day, category) {
-	console.log({input, day, category});
 	if (day != "all") {
 		$(".day-table").not(".day-" + day).addClass("hidden hidden_day");
 		$(".day-" + day).removeClass("hidden hidden_day");
@@ -318,20 +328,24 @@ function renderTagsToClassList(tagArray) {
     return "";
 }
 
-function renderTagsToLabels(tagArray) {
+function renderTagsToLabels(tagArray, showLabels) {
     if (tagArray) {
         var tagsString = "";
         for (var i = 0; i < tagArray.length; i++) {
 			var tag = tagArray[i].charAt(0).toUpperCase() + tagArray[i].slice(1);
 			var classString = tagArray[i];
+			var textClassString = "";
+			var iconString = "";
 
 			/* add custom icons for each event category */
 			if (eventTagIcons.hasOwnProperty(tagArray[i])) {
-				tagsString += iconPrefix + '<i class="' + eventTagIcons[tagArray[i]] + '" aria-hidden="true"></i>' + iconSuffix;
-				classString += " sr-only";
+				iconString = '<i class="' + eventTagIcons[tagArray[i]] + '" aria-hidden="true"></i> ';
+				if (!showLabels) {
+					textClassString += " sr-only";
+				}
 			}
 			
-            tagsString += "<span class='label label-primary text-capitalize tag_" + classString + "'>" + tag.replace(/_/g, " ") + "</span> ";
+            tagsString += "<span class='label label-primary text-capitalize tag_" + classString + "'>" + iconString + "<span class='category-text-label" + textClassString + "'>" + tag.replace(/_/g, " ") + "</span></span> ";
         }
         return "<span class='event-tag-container'>" + tagsString + "</span>";
     }
