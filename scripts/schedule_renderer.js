@@ -63,14 +63,15 @@ function renderSchedule(events) {
 			if (event.title == "Registration") {
 				event.description = "";
 			}
-			var dialogContents = "" + 
-			"<h4>Start time</h4><p>" + moment(event.startTime).tz(timezone).format("dddd[, ]HH:mm")  + "</p>" +
-			"<h4>End time</h4><p>" + moment(event.endTime).tz(timezone).format("dddd[, ]HH:mm")  + "</p>" + 
-			"<h4>Location</h4><p>" + event.location  + "</p>";
+			var dialogContents = "<div class='row'>" + 
+			"<div class='col-sm-6'><h4>Start time</h4><p>" + moment(event.startTime).tz(timezone).format("dddd[, ]HH:mm")  + "</p></div>" +
+			"<div class='col-sm-6'><h4>End time</h4><p>" + moment(event.endTime).tz(timezone).format("dddd[, ]HH:mm")  + "</p></div></div>" + 
+			"<div class='row'><div class='col-sm-6'><h4>Location</h4><p>" + event.location  + "</p></div>";
 			if (event.eventTags && event.eventTags.length > 0) {
 				
-				dialogContents += "<h4>Categories</h4><p>" + renderTagsToLabels(event.eventTags, true)  + "</p>";
+				dialogContents += "<div class='col-sm-6'><h4>Categories</h4><p>" + renderTagsToLabels(event.eventTags, true)  + "</p></div>";
 			}
+			dialogContents += "</div>";
 			if (event.description != "" && event.description.length > 5) {
 				dialogContents += "<h4>Description</h4><p style='white-space: pre-wrap;'>" + event.description  + "</p>";
 			}

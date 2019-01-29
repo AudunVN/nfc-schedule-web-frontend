@@ -2,7 +2,7 @@
     margin-bottom: 0;
 }
 
-#schedule-output-container .table .tag_main {
+.tag_main {
 	display: none !important;
 }
 
@@ -46,8 +46,12 @@
 	margin-left: 0.3em;
 }
 
-#schedule-output-container .event-tag-container .label {
-    vertical-align: 0.1em;
+.event-tag-container .label {
+	vertical-align: 0.1em;
+	display: inline-block;
+	height: 100%;
+	padding: 0.5em;
+	margin-top: 0.25em;
 }
 
 #schedule-output-container .separator-mobile {
@@ -67,13 +71,6 @@
 }
 
 @media only screen and (max-width: 60em) {
-	#schedule-output-container .event-tag-container .label {
-		display: inline-block;
-		height: 100%;
-		padding: 0.5em;
-		margin-top: 0.25em;
-	}
-
 	#schedule-output-container .table td:nth-child(1),
 	#schedule-output-container .table td:nth-child(2) {
 		display: block;
