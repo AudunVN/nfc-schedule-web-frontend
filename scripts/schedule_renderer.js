@@ -5,8 +5,8 @@ var scheduleContainerSelector = "#schedule-output-container";
 
 var fallbackEventsURL = "/static/js/events.json";
 
-var defaultEventsURL = fallbackEventsURL; /* until the events backend is up */
-var apiKey = "";
+var defaultEventsURL = "https://games-api.nordicfuzzcon.org/schedule/v1/events";
+var apiKey = "f18f8411-42ba-4587-aed0-90d55bcb3b49";
 
 /* used to add Font Awesome icons for each event tag */
 var eventTagIcons = {
@@ -373,11 +373,24 @@ jQuery.expr[':'].icontains = function(a, i, m) {
 
 $(document).ready(function() {
 	if (document.querySelector(scheduleContainerSelector)) {
-		$.getJSON(defaultEventsURL, function(data) {
-			renderSchedule(data);
-		}).fail(function() {
-			/* load fallback data */
-			//renderSchedule(eventData);
+		$.ajax({
+			url: defaultEventsURL,
+			type: 'GET',
+			dataType: 'json',
+			beforeSend: function(xhr) {
+				xhr.setRequestHeader('X-API-KEY', apiKey);
+			},
+			success: function(data) {
+				console.log("Got events!");
+				renderSchedule(data);
+			},
+			fail: function() {
+				$.getJSON(fallbackEventsURL, function(data) {
+					renderSchedule(data);
+				}).fail(function() {
+					console.warn("Unable to load events data!");
+				});
+			}
 		});
 	}
 });
