@@ -29,6 +29,7 @@ var eventTagIcons = {
 	"competition": "icons8-game-position",
 	"party": "icons8-party-balloons",
 	"operations": "icons8-clipboard-checklist",
+	"open_house": "fa fa-home",
 	"event_details_updated": "fa fa-exclamation-triangle"
 }
 
