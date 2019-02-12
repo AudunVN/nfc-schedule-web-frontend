@@ -29,6 +29,7 @@ var eventTagIcons = {
 	"competition": "icons8-game-position",
 	"party": "icons8-party-balloons",
 	"operations": "icons8-clipboard-checklist",
+	"event_details_updated": "fa fa-exclamation-triangle"
 }
 
 var currentSearch = "";
@@ -45,6 +46,13 @@ function renderSchedule(events) {
 	/* render each element */
 	for (var i = 0; i < events.length; i++) {
 		var event = events[i];
+
+		if (event.hasOwnProperty("changedFrom")) {
+			if (event.startTime != event.changedFrom.startTime || event.endTime != event.changedFrom.endTime || event.location != event.changedFrom.location) {
+				event.eventTags.push("event_details_updated");
+			}
+		}
+
 		var currentStartDay = moment(event.startTime).tz(timezone).format("dddd");
 		
 		if (currentStartDay != previousStartDay) {
@@ -345,8 +353,12 @@ function renderTagsToLabels(tagArray, showLabels) {
 					textClassString += " sr-only";
 				}
 			}
+			var labelClass = "label-primary";
+			if (tagArray[i] == "event_details_updated") {
+				labelClass = "label-warning";
+			}
 			
-            tagsString += "<span class='label label-primary text-capitalize tag_" + classString + "'>" + iconString + "<span class='category-text-label" + textClassString + "'>" + tag.replace(/_/g, " ") + "</span></span> ";
+            tagsString += "<span class='label " + labelClass + " text-capitalize tag_" + classString + "'>" + iconString + "<span class='category-text-label" + textClassString + "'>" + tag.replace(/_/g, " ") + "</span></span> ";
         }
         return "<span class='event-tag-container'>" + tagsString + "</span>";
     }
@@ -384,10 +396,10 @@ $(document).ready(function() {
 				console.log("Got events!");
 				renderSchedule(data);
 			},
-			fail: function() {
+			error: function() {
 				$.getJSON(fallbackEventsURL, function(data) {
 					renderSchedule(data);
-				}).fail(function() {
+				}).error(function() {
 					console.warn("Unable to load events data!");
 				});
 			}
