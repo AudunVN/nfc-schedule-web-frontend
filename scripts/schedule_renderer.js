@@ -5,7 +5,7 @@ var scheduleContainerSelector = "#schedule-output-container";
 
 var fallbackEventsURL = "/static/js/events.json";
 
-var defaultEventsURL = "https://games-api-staging.nordicfuzzcon.org/schedule/v1";
+var defaultEventsURL = "https://games-api-staging.nordicfuzzcon.org/schedule/v1/events";
 var apiKey = "staging-read";
 
 if (window.location.href.indexOf("www.nordicfuzzcon.org") != -1) {
