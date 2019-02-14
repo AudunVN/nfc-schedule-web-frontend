@@ -5,8 +5,14 @@ var scheduleContainerSelector = "#schedule-output-container";
 
 var fallbackEventsURL = "/static/js/events.json";
 
-var defaultEventsURL = "https://games-api.nordicfuzzcon.org/schedule/v1/events";
-var apiKey = "f18f8411-42ba-4587-aed0-90d55bcb3b49";
+var defaultEventsURL = "https://games-api-staging.nordicfuzzcon.org/schedule/v1";
+var apiKey = "staging-read";
+
+if (window.location.href.indexOf("www.nordicfuzzcon.org") != -1) {
+	/* switch to production */
+	defaultEventsURL = "https://games-api.nordicfuzzcon.org/schedule/v1/events";
+	apiKey = "f18f8411-42ba-4587-aed0-90d55bcb3b49";
+}
 
 /* used to add Font Awesome icons for each event tag */
 var eventTagIcons = {
