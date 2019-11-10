@@ -25,7 +25,7 @@ var eventTagIcons = {
 	"guest_of_honor": "fa fa-star",
 	"northern_light": "fa fa-star",
 	"shopping": "fa fa-shopping-bag",
-	"charity": "fa fa-ambulance",
+	"charity": "fa fa-ambulance", // FIXME: Change to a cat or several.
 	"photo": "fa fa-camera-retro",
 	"art": "fa fa-picture-o",
 	"fursuit": "fa fa-paw",
@@ -36,7 +36,10 @@ var eventTagIcons = {
 	"party": "icons8-party-balloons",
 	"operations": "icons8-clipboard-checklist",
 	"open_house": "fa fa-home",
-	"event_details_updated": "fa fa-exclamation-triangle"
+	"event_details_updated": "fa fa-exclamation-triangle",
+	"super_sponsor_queue": "", // FIXME: icon for VIP / Priority
+	"healthcare": "", // FIXME: icon for Spa or something
+	"physical_activity": "" // FIXME: icon for dumbbell or muscle
 }
 
 var currentSearch = "";
