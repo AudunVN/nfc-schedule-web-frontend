@@ -117,8 +117,8 @@ function renderSchedule(events) {
 
 	$('[data-toggle="tooltip"]') 
 
-	$("#schedule-loader").addClass("d-none");
-	$(scheduleContainerSelector).removeClass("d-none");
+	$("#schedule-loader").addClass("hidden");
+	$(scheduleContainerSelector).removeClass("hidden");
 }
 
 function getAllTags(events) {
@@ -149,11 +149,11 @@ function initializeFiltering(events) {
 	'<div class="form-group">' +
 		'<label class="control-label" for="event-search-input">Search </label>' +
 		'<div class="input-group">' +
-			'<div class="input-group-prepend">' +
-				'<span class="input-group-text"><i class="fa fa-search"></i></span>' +
+			'<div class="input-group-addon">' +
+				'<i class="fa fa-search"></i>' +
 			'</div>' +
 			'<input class="form-control" type="text" id="event-search-input" name="Search" placeholder="Search..." maxlength="30">' +
-			'<span class="input-group-append">' +
+			'<span class="input-group-btn">' +
 				'<button class="btn btn-warning clear-search" type="button">Reset</button>' +
 			'</span>' +
 		'</div>' +
@@ -164,7 +164,7 @@ function initializeFiltering(events) {
 	var tagFilter = '' +
 	'<div class="form-group">' +
 		'<label class="control-label" for="event-filter-input">Category </label>' +
-		'<div class="btn-container category-options-container btn-group-toggle" data-toggle="buttons">' +
+		'<div class="btn-container category-options-container" data-toggle="buttons">' +
 		'<label class="btn btn-primary no-fullwidth-btn btn-sm active">' +
 			'<input type="radio" name="filter-options" id="category_all" autocomplete="off" checked> All categories' +
 		'</label> ';
@@ -192,7 +192,7 @@ function initializeFiltering(events) {
 	var dayFilter = '' +
 	'<div class="form-group">' +
 		'<label class="control-label" for="event-filter-input">Day </label>' +
-		'<div class="btn-container day-options-container btn-group-toggle" data-toggle="buttons">' +
+		'<div class="btn-container day-options-container" data-toggle="buttons">' +
 		'<label class="btn btn-primary no-fullwidth-btn btn-sm active">' +
 			'<input type="radio" name="filter-day" id="day_all" autocomplete="off" checked> All days' +
 		'</label> ';
@@ -207,8 +207,8 @@ function initializeFiltering(events) {
 		'</div>' +
 	'</div>';
 	
-	$(scheduleContainerSelector).prepend("<div class='card border-light mb-3'><div class='card-body pb-1 pt-3'>" + searchInput  + dayFilter + tagFilter + "</div></div>"); /* tag filter */
-	$(scheduleContainerSelector).append('<div class="text-center d-none" id="no-results-msg"><h4>No events found</h4><button class="btn btn-warning clear-search" type="button">Reset search</button></div>');
+	$(scheduleContainerSelector).prepend("<div class='well'>" + searchInput  + dayFilter + tagFilter + "</div>"); /* tag filter */
+	$(scheduleContainerSelector).append('<div class="text-center hidden" id="no-results-msg"><h4>No events found</h4><button class="btn btn-warning clear-search" type="button">Reset search</button></div>');
 
 	var currentUrl = window.location.href;
 
@@ -259,63 +259,63 @@ function initializeFiltering(events) {
 
 function search(input, day, category) {
 	if (day != "all") {
-		$(".day-table").not(".day-" + day).addClass("d-none hidden_day");
-		$(".day-" + day).removeClass("d-none hidden_day");
+		$(".day-table").not(".day-" + day).addClass("hidden hidden_day");
+		$(".day-" + day).removeClass("hidden hidden_day");
 		window.history.replaceState({}, document.title, setUrlParameter(window.location.href, "day", day));
 	} else {
-		$(".day-table.hidden_day").removeClass("d-none hidden_day");
+		$(".day-table.hidden_day").removeClass("hidden hidden_day");
 		window.history.replaceState({}, document.title, setUrlParameter(window.location.href, "day", ""));
 	}
 
 	if (category != "all") {
-		$(".day-table tr").not(".event_" + category).addClass("d-none hidden_category");
-		$(".day-table tr.event_" + category).removeClass("d-none hidden_category");
+		$(".day-table tr").not(".event_" + category).addClass("hidden hidden_category");
+		$(".day-table tr.event_" + category).removeClass("hidden hidden_category");
 		window.history.replaceState({}, document.title, setUrlParameter(window.location.href, "category", category));
 	} else {
-		$(".day-table tr.hidden_category").removeClass("d-none hidden_category");
+		$(".day-table tr.hidden_category").removeClass("hidden hidden_category");
 		window.history.replaceState({}, document.title, setUrlParameter(window.location.href, "category", ""));
 	}
 
 	if (input != "") {
-		$(".day-table tr").not("tr:icontains('" + input + "')").addClass("d-none hidden_search");
-		$(".day-table tr:icontains('" + input + "')").not(".hidden_category").removeClass("d-none hidden_search");
+		$(".day-table tr").not("tr:icontains('" + input + "')").addClass("hidden hidden_search");
+		$(".day-table tr:icontains('" + input + "')").not(".hidden_category").removeClass("hidden hidden_search");
 		window.history.replaceState({}, document.title, setUrlParameter(window.location.href, "search", input));
 	} else {
-		$(".day-table tr.hidden_search").not(".hidden_category").removeClass("d-none hidden_search");
+		$(".day-table tr.hidden_search").not(".hidden_category").removeClass("hidden hidden_search");
 		window.history.replaceState({}, document.title, setUrlParameter(window.location.href, "search", ""));
 	}
 
 	$(".day-title").each(function(index, title) {
-		if ($(title).next(".day-table:not(.hidden_day)").find("tr:not(.hidden_category,.hidden_search)").length == 0) {
-			$(title).addClass("d-none");
-			$(title).next(".day-table").addClass("d-none");
+		if ($(title).next(".day-table:not(.hidden_day)").find("tr:not(.hidden_category,.hidden_search)").size() == 0) {
+			$(title).addClass("hidden");
+			$(title).next(".day-table").addClass("hidden");
 		} else {
-			$(title).removeClass("d-none");
-			$(title).next(".day-table").removeClass("d-none");
+			$(title).removeClass("hidden");
+			$(title).next(".day-table").removeClass("hidden");
 		}
 	});
 
-	if ($(".day-table tr:visible").length == 0) {
-		$("#no-results-msg").removeClass("d-none");
+	if ($(".day-table tr:visible").size() == 0) {
+		$("#no-results-msg").removeClass("hidden");
 	} else {
-		$("#no-results-msg").addClass("d-none");
+		$("#no-results-msg").addClass("hidden");
 	}
 
 	setTimeout(function() {
 		$(".day-title").each(function(index, title) {
-			if ($(title).next(".day-table:not(.hidden_day)").find("tr:not(.hidden_category,.hidden_search)").length == 0) {
-				$(title).addClass("d-none");
-				$(title).next(".day-table").addClass("d-none");
+			if ($(title).next(".day-table:not(.hidden_day)").find("tr:not(.hidden_category,.hidden_search)").size() == 0) {
+				$(title).addClass("hidden");
+				$(title).next(".day-table").addClass("hidden");
 			} else {
-				$(title).removeClass("d-none");
-				$(title).next(".day-table").removeClass("d-none");
+				$(title).removeClass("hidden");
+				$(title).next(".day-table").removeClass("hidden");
 			}
 		});
 
-		if ($(".day-table tr:visible").length == 0) {
-			$("#no-results-msg").removeClass("d-none");
+		if ($(".day-table tr:visible").size() == 0) {
+			$("#no-results-msg").removeClass("hidden");
 		} else {
-			$("#no-results-msg").addClass("d-none");
+			$("#no-results-msg").addClass("hidden");
 		}
 
 		$(".day-table.table-striped").removeClass("table-striped");
@@ -363,12 +363,12 @@ function renderTagsToLabels(tagArray, showLabels) {
 					textClassString += " sr-only";
 				}
 			}
-			var labelClass = "badge-primary";
+			var labelClass = "label-primary";
 			if (tagArray[i] == "event_details_updated") {
-				labelClass = "badge-warning";
+				labelClass = "label-warning";
 			}
 			
-            tagsString += "<span class='badge " + labelClass + " text-capitalize tag_" + classString + "'>" + iconString + "<span class='category-text-label" + textClassString + "'>" + tag.replace(/_/g, " ") + "</span></span> ";
+            tagsString += "<span class='label " + labelClass + " text-capitalize tag_" + classString + "'>" + iconString + "<span class='category-text-label" + textClassString + "'>" + tag.replace(/_/g, " ") + "</span></span> ";
         }
         return "<span class='event-tag-container'>" + tagsString + "</span>";
     }
@@ -409,7 +409,7 @@ $(document).ready(function() {
 			error: function() {
 				$.getJSON(fallbackEventsURL, function(data) {
 					renderSchedule(data);
-				}).fail(function() {
+				}).error(function() {
 					console.warn("Unable to load events data!");
 				});
 			}

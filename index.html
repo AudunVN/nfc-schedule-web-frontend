@@ -3,24 +3,26 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>sched export</title>
-		<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.css'>
-		<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick-theme.min.css'>
-		<link rel="stylesheet" href="https://www.nordicfuzzcon.org/Content/themes/2019/styles/nfc_bootstrap.min.css">
-		<link rel="stylesheet" href="styles/style.css">
+		<link href="styles/bootstrap.min.css" rel="stylesheet">
 		<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 	</head>
 
 	<body>
 		<div class="container">
-			<div id="schedule-output-container">
+			<div class="card text-dark border-light">
+				<div class="card-body">
+					<div id="schedule-output-container">
+					</div>
+				</div>
 			</div>
 		</div>
 		<!-- Latest compiled and minified JavaScript -->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-		<script src="scripts/moment.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script>window.jQuery || document.write('<script src="scripts/jquery-3.3.1.min.js"><\/script>')</script>
+        <script src="scripts/bootstrap.bundle.min.js"></script>
+        <script src="scripts/moment.min.js"></script>
 		<script src="scripts/moment-timezone-with-data.min.js"></script>
-		<script src="scripts/tools.js"></script>
+		<script src="scripts/nfc_base.js"></script>
 		<script src="scripts/schedule_renderer.js"></script>
 	</body>
 </html>

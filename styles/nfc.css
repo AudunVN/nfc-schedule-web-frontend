@@ -1,0 +1,646 @@
+nav + main {
+    margin-top: 5rem;
+    margin-bottom: 1rem;
+}
+
+[class*="icons8"] {
+    text-shadow: #fff 0px 1px 1px;
+    -webkit-text-stroke: 0.2px rgba(0,0,0,0.1);
+    -webkit-text-stroke: 0.2px;
+}
+
+.dark-text-shadow {
+    text-shadow: 0 0 0.4em rgba(0,0,0,0.9);
+}
+
+.cta-container {
+    display: block;
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    bottom: 6.5em;
+    z-index: 5;
+}
+
+.cta-container .btn {
+    box-shadow: 0 0 1em 0.4em rgba(252, 80, 254, 0.5);
+}
+
+@media (min-width: 992px) {
+    /* remove padding at lg breakpoint */
+    #main-menu-modal .site-link-card .col-lg-6 .card-footer {
+        margin-top: -0.75em;
+        padding-top: 0em;
+    }
+
+    #main-menu-modal .site-link-card .site-links:before {
+        display: none;
+    }
+
+    #main-menu-modal .site-link-card .card {
+        display: block;
+    }
+}
+
+@media (max-width: 992px) {
+    #main-menu-modal .site-link-card .col-lg-6 .card-body {
+        display: none;
+    }
+
+    #main-menu-modal .site-link-card .col-lg-6 .card-footer {
+        margin-top: 0;
+    }
+
+    #main-menu-modal .site-link-card .col-lg-6 .site-links a {
+        padding: 1em;
+    }
+}
+
+#main-menu-modal .site-link-card .card-footer > .btn .toggle-menu .fa {
+    transform: rotate(180deg);
+    transition: transform 0.5s ease;
+}
+
+#main-menu-modal .site-link-card .card-footer > .btn[aria-expanded="false"] .toggle-menu .fa {
+    transform: rotate(0deg);
+}
+
+.fullscreen-modal {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    margin: 0;
+    padding: 0;
+    padding-right: 0px !important;
+    overflow: hidden;
+}
+
+.fullscreen-modal .modal-dialog {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.fullscreen-modal .modal-content {
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.fullscreen-modal .modal-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4.25em;
+}
+
+.fullscreen-modal .modal-body {
+    top: 4.25em;
+    bottom: 5em;
+    position: absolute;
+    left: 0;
+    right: 0;
+    overflow: auto;
+}
+
+.fullscreen-modal .modal-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 5em;
+}
+
+#main-menu-modal .user-profile-img {
+    background-size: cover;
+    background-position: center center;
+    height: 3em;
+    width: 3em;
+    display: inline-block;
+    vertical-align: -1em;
+}
+
+.menu-profile-card {
+    background: #272b30 linear-gradient(180deg,#24272b,#212223) repeat-x!important;
+}
+
+#main-menu-modal .no-descriptions .equal-height-cards .card-text {
+    height: 0;
+    overflow: hidden;
+    margin-top: -1em;
+}
+
+#main-menu-modal .card {
+    overflow: hidden;
+}
+
+#main-menu-modal .site-link-card .site-links:before {
+    content: "";
+    display: block;
+    height: 1em;    
+    width: 100%;
+}
+
+#main-menu-modal .site-link-card .card-footer {
+    position: relative;
+    min-height: 3em;
+    margin-top: 1em;
+    padding-top: 3em;
+}
+
+#main-menu-modal .site-link-card .card-footer > .btn {
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    width: 100%;
+    border-radius: 0;
+}
+
+#main-menu-modal .site-links .btn-link {
+    color: #2e93ff;
+    text-shadow: 0 0 0.2em rgba(0,0,0,1);
+    font-size: 1.1em;
+}
+
+#main-menu-modal .row {
+    padding-left: 7.5px;
+    padding-right: 7.5px;
+}
+
+#main-menu-modal .site-link-card .card .card-body {
+    padding-bottom: 0.25em;
+}
+
+#main-menu-modal .row > div[class*='col-'] {
+    padding-left: 7.5px;
+    padding-right: 7.5px;
+}
+
+.site-links .sep,
+.site-links .sep:last-of-type {
+    display: none;
+}
+
+.equal-height-cards.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.equal-height-cards .card {
+    width: 100%;
+}
+ 
+.equal-height-cards.row > div[class*='col-'] {
+    display: flex;
+}
+ 
+.navbar-logo {
+    height: 2em;
+    vertical-align: -0.65em;
+}
+
+.bs-component {
+    position: relative;
+}
+
+.bs-component .modal {
+    display: block;
+    position: relative;
+}
+
+.landing-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    /*height: 50em;*/
+    overflow: hidden;
+}
+
+/*.landing-container .background-img {
+    background-image: url(../images/bg_layer.png);
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    bottom: 4em;
+    right: 0;
+    background-size: cover;
+    background-position: center center;
+}*/
+
+.more-link-icon {
+    font-size: 3rem;
+}
+
+.tweet-image {
+    max-height: 10em;
+    box-shadow: 0 0 0.5em 0 rgba(0,0,0,0.25);
+    border-radius: 0.1em;
+}
+
+@media (min-aspect-ratio: 1/1) {
+    .furovision-logotype {
+        background-size: 40vw !important;
+    }
+}
+
+@media (max-aspect-ratio: 1/1) {
+    .furovision-logotype {
+        background-size: 40vh !important;
+    }
+}
+
+/*.furovision-logotype {
+    position: absolute;
+    display: none;
+    background-image: url(../images/logo-furovision-final.png);
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: 40%;
+    background-position: center 48%;
+    transform: rotate(18deg) rotateX(-1deg) rotateY(-5deg);
+    margin-top: 5vw;
+    margin-left: -5vh;
+    z-index: 10;
+}*/
+
+.bg-layer {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+/*.mausie-layer {
+    background-image: url(../images/mausie_layer_full.png);
+    background-size: cover;
+    background-position: center center;
+    z-index: 3;
+}*/
+
+.scene-layer {
+    background-image: url("../images/bg_main_cmp_2000px_progressive.jpg");
+    background-size: cover;
+    background-position: 71% center;
+    z-index: 4;
+}
+
+.channel-logo {
+    position: relative;
+    font-family: Ubuntu, sans-serif;
+    font-size: 1em;
+    color: white;
+    font-weight: 500;
+    z-index: 5;
+    text-shadow: 0 0 0.1em rgba(0,0,0,0.75), 0 0 0.2em rgba(0,0,0,0.75);
+    transform: translateZ(0);
+}
+
+.channel-logo:after {
+    content: "";
+    top: 0.43em;
+    right: 0.3em;
+    height: 1.4em;
+    width: 1.4em;
+    background-image: url(../images/logo-small-tsp-edit.svg);
+    background-size: contain;
+    position: absolute;
+    z-index: 5;
+}
+
+body > .channel-logo:after {
+    content: "";
+    top: -0.075em;
+    right: -1.5em;
+    height: 1.4em;
+    width: 1.4em;
+    background-image: url(../images/logo-small-tsp-edit.png);
+    background-size: contain;
+    position: absolute;
+    z-index: 5;
+}
+
+.embed-responsive .nfc-tv-logo {
+    position: absolute;
+    height: 11%;
+    padding-top: 1.5%;
+    padding-bottom: 1.5%;
+    padding-right: 2%;
+    padding-left: 10%;
+    top: 0;
+    right: 0;
+    background: black;
+}
+
+body > .channel-logo {
+    position: fixed;
+    top: 0.5em;
+    right: 1.85em;
+    font-family: Ubuntu, sans-serif;
+    font-size: 5vh;
+    color: white;
+    font-weight: 500;
+    z-index: 500;
+}
+
+body > .channel-logo .btn {
+    position: absolute;
+    width: 11.75em;
+    left: 0.15em;
+    font-size: 1.325vh;
+}
+
+body > .channel-logo .btn h3 {
+    margin-bottom: 0;
+    font-size: 2.1vh;
+}
+
+body > .channel-logo .btn .icon {
+    font-size: 0.8em;
+    vertical-align: 0.05em;
+    margin-right: 0.25em;
+}
+
+.section-transition {
+    background: #21203c;
+    box-shadow: 0 0 1em 0.5em #070f22, 0 0 1em 0.5em #070f22 inset;
+    z-index: 100;
+    position: relative;
+    height: 4em;
+    margin-top: -4em;
+    overflow: hidden;
+}
+
+.section-transition.slick-slider {
+    margin-bottom: 0;
+}
+
+/*.section-transition > * {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 100%;
+    white-space: nowrap;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}*/
+
+.main-content-container {
+    /*background-image: linear-gradient(to top, #564b61 20%, #21203c 80%);
+    background-color: #21203c;*/
+    background-image: url(../images/bg-test-v2.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    background-color: #313165;
+    position: relative;
+    overflow: hidden;
+}
+
+.main-content-container > * {
+    z-index: 5;
+    position: relative;
+}
+
+.loader {
+    display: inline-block;
+    width: 10em;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.loader > * {
+    max-width: 100%;
+}
+
+.loader img,
+.smil .loader video {
+    display: none;
+}
+
+.loader video,
+.smil .loader img {
+    display: block;
+}
+
+@media (max-width: 50em), (prefers-reduced-motion: reduce) {
+    /* rm bg animation on small viewports */
+    .smil.svgfilters .main-content-container:after {
+        display: none;
+    }
+}
+
+.smil.svgfilters .main-content-container:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url(../images/bganim.svg);
+    width: 100%;
+    height: 100%;
+    background-attachment: fixed;
+    z-index: 0;
+    background-size: 100%;
+    filter: blur(5px);
+}
+
+.main-content-container > footer,
+nav.navbar {
+    box-shadow: 0 0 1em 0 #21203c;
+}
+
+@media (min-width: 576px) {
+    footer .row {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+.slick-slide > * {
+	left: 0;
+	position: relative;
+}
+
+.card-img-top.tv {
+    position: relative;
+}
+
+.card-img-top.tv h5 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-shadow: 0 0 0.25em rgba(0,0,0,1), 0 0 1.5em rgba(0,0,0,0.5);
+}
+
+.card-img-top.tv:before {
+    z-index: 5;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-image: url("../images/crt.png");
+    background-size: 100% 100%;
+    overflow: hidden;
+}
+
+.card-img-top img {
+    width: 100%;
+}
+
+.bg-space,
+.news-ticker {
+    background-image: url("../images/textures/14.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.news-ticker .scroll-content {
+	white-space: nowrap;
+    text-overflow: ellipsis;
+    height: 4em;
+}
+
+.news-ticker .scroll-content > * {
+	margin-top: 0.4em;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+
+.latest-news-header-container h3 {
+    padding-left: 1em;
+    padding-right: 1em;
+    min-height: 1em;
+}
+
+.latest-news-container {
+    overflow: hidden;
+}
+
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+footer {
+    overflow: hidden;
+}
+
+.close {
+    text-shadow: none;
+}
+
+.live-countdown {
+    position: absolute;
+    top: 0.9em;
+    left: 0.5em;
+    width: 5.5em;
+    font-size: 5vh;
+    z-index: 500;
+}
+
+.live-countdown div * {
+    margin: 0;
+    padding: 0;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: Ubuntu, sans-serif;
+    width: 100%;
+}
+
+.live-countdown div:nth-child(1) * {
+    font-size: 0.7em;
+    padding: 0.2em;
+}
+
+.live-countdown div:nth-child(2) * {
+    font-size: 0.7em;
+    padding: 0.2em;
+}g
+
+#tweets .interaction {
+    margin-top: -2em;
+    margin-bottom: 0.5em;
+}
+
+#tweets .interaction .fa {
+    font-size: 1.5em;
+}
+
+#tweets .interaction > a {
+    margin: 0.5em;
+}
+
+#tweets a[data-scribe="element:url"] {
+    display: block;
+    margin-top: 0.5em;
+    text-align: center;
+}
+
+#nfc-logo-footer {
+    max-width: 100%;
+    height: 5em;
+}
+
+.tweet-cta {
+    font-size: 3em;
+}
+
+.nfc-list {
+    display: block;
+}
+
+.nfc-list a {
+    display: inline-block;
+    margin: 0.25em;
+}
+
+.glace {
+    background-image: url("https://northpaw.space/cCard/Glaceon25mid.png");
+    display: inline-block;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.smol.glace {
+    height: 1.5em;
+    width: 1.5em;
+    vertical-align: -0.2em;
+    margin-right: 0.2em;
+}
+
+.nfc-list h5 {
+    margin-top: 0.25em;
+}
+
+.btn-container {
+    margin-top: -0.75em;
+}
+
+.btn-container > .btn {
+    margin-top: 0.75em;
+}

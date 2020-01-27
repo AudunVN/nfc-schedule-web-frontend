@@ -1,0 +1,560 @@
+// NFC2020
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Rubik');
+
+@import url('https://fonts.googleapis.com/css?family=Nunito:300|Ubuntu:400,500,700|Poppins:400,500,600,700,800,900&amp;subset=latin-ext');
+
+/* SVT Graphic Profile https://styleguide.svt.se/identity/color */
+
+/* Red */
+$svt-color-red-extra-light: #ffd2d7;
+$svt-color-red-light: #f0828c;
+$svt-color-red-regular: #e13241;
+$svt-color-red-dark: #b9232d;
+$svt-color-red-extra-dark: #911414;
+$svt-color-red-accent: #ff4b7d;
+
+/* Orange */
+$svt-color-orange-extra-light: #ffe6d2;
+$svt-color-orange-light: #faaf82;
+$svt-color-orange-regular: #eb6937;
+$svt-color-orange-dark: #d25a1e;
+$svt-color-orange-extra-dark: #b93c05;
+$svt-color-orange-accent: #ff912d;
+
+/* Yellow */
+$svt-color-yellow-extra-light: #fff0d2;
+$svt-color-yellow-light: #ffdc8c;
+$svt-color-yellow-regular: #ffc346;
+$svt-color-yellow-dark: #ebaa23;
+$svt-color-yellow-extra-dark: #d28c00;
+$svt-color-yellow-accent: #fff000;
+
+/* Green */
+$svt-color-green-extra-light: #d2ebd2;
+$svt-color-green-light: #82c882;
+$svt-color-green-regular: #32a532;
+$svt-color-green-dark: #23821e;
+$svt-color-green-extra-dark: #0f5a0a;
+$svt-color-green-accent: #00c800;
+
+/* Turquoise */
+$svt-color-turquoise-extra-light: #cdf0e6;
+$svt-color-turquoise-light: #87d7cd;
+$svt-color-turquoise-regular: #3cbeb4;
+$svt-color-turquoise-dark: #2d9b91;
+$svt-color-turquoise-extra-dark: #197869;
+$svt-color-turquoise-accent: #00dcd2;
+
+/* Blue */
+$svt-color-blue-extra-light: #d2e6f5;
+$svt-color-blue-light: #7dbee1;
+$svt-color-blue-regular: #2891c8;
+$svt-color-blue-dark: #1e69aa;
+$svt-color-blue-extra-dark: #0f418c;
+$svt-color-blue-accent: #0091ff;
+
+/* Purple */
+$svt-color-purple-extra-light: #d7d2f0;
+$svt-color-purple-light: #b48ccd;
+$svt-color-purple-regular: #87289b;
+$svt-color-purple-dark: #641e78;
+$svt-color-purple-extra-dark: #410f5a;
+$svt-color-purple-accent: #be00dc;
+
+/* Gray */
+$svt-color-gray-extra-light: #ebebeb;
+$svt-color-gray-light: #cccccc;
+$svt-color-gray-regular: #8c8c8c;
+$svt-color-gray-dark: #737373;
+$svt-color-gray-extra-dark: #4d4d4d;
+
+/* Warm Gray */
+$svt-color-warm-gray-extra-light: #ebebe6;
+$svt-color-warm-gray-light: #cdcdc3;
+$svt-color-warm-gray-regular: #a09b96;
+$svt-color-warm-gray-dark: #78736e;
+$svt-color-warm-gray-extra-dark: #504b46;
+
+/* Cool Gray */
+$svt-color-cool-gray-extra-light: #e6ebeb;
+$svt-color-cool-gray-light: #d2dcdc;
+$svt-color-cool-gray-regular: #7d9196;
+$svt-color-cool-gray-dark: #647378;
+$svt-color-cool-gray-extra-dark: #465055;
+
+/* Black & White */
+$svt-color-white: #ffffff;
+$svt-color-black: #000000;
+
+// Variables ===================================================================
+
+@mixin btn-shadow($color){
+  @include gradient-y-three-colors(lighten($color, 6%), $color, 60%, darken($color, 4%));
+  filter: none;
+}
+
+@mixin btn-shadow-inverse($color){
+  @include gradient-y-three-colors(darken($color, 18%), darken($color, 15%), 40%, darken($color, 13%));
+  filter: none;
+}
+
+// Navbar ======================================================================
+
+.navbar {
+  border: 1px solid rgba(0, 0, 0, 0.6);
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+
+  .container {
+    padding: 0;
+  }
+
+  .navbar-toggler {
+    border-color: rgba(0, 0, 0, 0.6);
+  }
+
+  &-fixed-top {
+    border-width: 0 0 1px 0;
+  }
+
+  &-fixed-bottom {
+    border-width: 1px 0 0 0;
+  }
+
+  .nav-link {
+    padding: 1rem;
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    border-right: 1px solid rgba(0, 0, 0, 0.2);
+
+    &:hover,
+    &:focus {
+      @include btn-shadow-inverse($gray-800);
+      border-left: 1px solid rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  &-brand {
+    padding: 0.75rem 1rem calc(54px - 0.75rem - 30px);
+    margin-right: 0;
+    border-right: 1px solid rgba(0, 0, 0, 0.2);
+  }
+
+  .nav-item.active .nav-link {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-left: 1px solid rgba(0, 0, 0, 0.2);
+  }
+
+  &-nav .nav-item + .nav-item {
+    margin-left: 0;
+  }
+
+  &.bg-light {
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+
+    .nav-link {
+      &:hover,
+      &:focus {
+        @include btn-shadow-inverse($gray-600);
+        border-left: 1px solid rgba(0, 0, 0, 0.2);
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .navbar-expand-sm {
+    .navbar-brand,
+    .nav-link {
+      border: none !important;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar-expand-md {
+    .navbar-brand,
+    .nav-link {
+      border: none !important;
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .navbar-expand-lg {
+    .navbar-brand,
+    .nav-link {
+      border: none !important;
+    }
+  }
+}
+
+// Buttons =====================================================================
+
+.btn {
+  border-color: rgba(0, 0, 0, 0.6);
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+
+  &:not([disabled]):not(.disabled).active,
+  &.disabled {
+    border-color: rgba(0, 0, 0, 0.6);
+    box-shadow: none;
+  }
+
+  &:hover,
+  &:focus,
+  &:not([disabled]):not(.disabled):active,
+  &:not([disabled]):not(.disabled):active:hover,
+  &:not([disabled]):not(.disabled).active:hover {
+    border-color: rgba(0, 0, 0, 0.6);
+  }
+}
+
+.btn-primary {
+  @include btn-shadow($primary);
+
+  &:not([disabled]):not(.disabled):hover,
+  &:not([disabled]):not(.disabled):focus,
+  &:not([disabled]):not(.disabled):active:hover,
+  &:not([disabled]):not(.disabled).active:hover {
+    @include btn-shadow-inverse($primary);
+  }
+}
+
+.btn-secondary {
+  @include btn-shadow($secondary);
+
+  &:not([disabled]):not(.disabled):hover,
+  &:not([disabled]):not(.disabled):focus,
+  &:not([disabled]):not(.disabled):active,
+  &:not([disabled]):not(.disabled).active {
+    @include btn-shadow-inverse($secondary);
+  }
+}
+
+.btn-success {
+  @include btn-shadow($success);
+  color: $white;
+
+  &:not([disabled]):not(.disabled):hover,
+  &:not([disabled]):not(.disabled):focus,
+  &:not([disabled]):not(.disabled):active,
+  &:not([disabled]):not(.disabled).active {
+    @include btn-shadow-inverse($success);
+  }
+}
+
+.btn-info {
+  @include btn-shadow($info);
+  color: $white;
+
+  &:not([disabled]):not(.disabled):hover,
+  &:not([disabled]):not(.disabled):focus,
+  &:not([disabled]):not(.disabled):active,
+  &:not([disabled]):not(.disabled).active {
+    @include btn-shadow-inverse($info);
+  }
+}
+
+.btn-warning {
+  @include btn-shadow($warning);
+  color: $white;
+
+  &:not([disabled]):not(.disabled):hover,
+  &:not([disabled]):not(.disabled):focus,
+  &:not([disabled]):not(.disabled):active,
+  &:not([disabled]):not(.disabled).active {
+    @include btn-shadow-inverse($warning);
+  }
+}
+
+.btn-danger {
+  @include btn-shadow($danger);
+
+  &:not([disabled]):not(.disabled):hover,
+  &:not([disabled]):not(.disabled):focus,
+  &:not([disabled]):not(.disabled):active,
+  &:not([disabled]):not(.disabled).active {
+    @include btn-shadow-inverse($danger);
+  }
+}
+
+.btn-link,
+.btn-link:hover {
+  border-color: transparent;
+}
+
+.btn-group,
+.btn-group-vertical {
+
+  .btn.active {
+    border-color: rgba(0, 0, 0, 0.6);
+  }
+}
+
+// Typography ==================================================================
+
+h1, h2, h3, h4, h5, h6 {
+  text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.3);
+}
+
+// Tables ======================================================================
+
+.table {
+  &-success,
+  &-info,
+  &-warning,
+  &-danger {
+    color: #fff;
+  }
+}
+
+.table {
+
+  .thead-dark th {
+    color: $white;
+  }
+  
+  td, th {
+    border: 0;
+  }
+  
+  tr {
+    background: $white;
+    color: $black;
+  }
+  
+  &-active {
+    &, > th, > td {
+      background-color: lighten($blue, 35);
+    }
+  }
+  
+  &-primary {
+    &, > th, > td {
+      background-color: $primary;
+    }
+  }
+
+  &-success {
+    &, > th, > td {
+      background-color: $success;
+    }
+  }
+
+  &-info {
+    &, > th, > td {
+      background-color: $info;
+    }
+  }
+
+  &-danger {
+    &, > th, > td {
+      background-color: $danger;
+    }
+  }
+
+  &-warning {
+    &, > th, > td {
+      background-color: $warning;
+    }
+  }
+
+  &-hover {
+  
+    tr:hover {
+      &, > th, > td {
+        color: $black;
+        background: $gray-400;
+      }
+    }
+    
+    .table-active:hover {
+      &, > th, > td {
+        background-color: lighten($blue, 20);
+      }
+    }
+
+    .table-success:hover {
+      &, > th, > td {
+        background-color: darken($success, 5%);
+      }
+    }
+
+    .table-info:hover {
+      &, > th, > td {
+        background-color: darken($info, 5%);
+      }
+    }
+
+    .table-danger:hover {
+      &, > th, > td {
+        background-color: darken($danger, 5%);
+      }
+    }
+
+    .table-warning:hover {
+      &, > th, > td {
+        background-color: darken($warning, 5%);
+      }
+    }
+
+  }
+}
+
+// Forms =======================================================================
+
+legend {
+  color: #fff;
+}
+
+.input-group-addon {
+  @include btn-shadow($secondary);
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+  color: $white;
+}
+
+// Navs ========================================================================
+
+.nav-tabs {
+
+  .nav-link,
+  .nav-link:hover {
+    color: #fff;
+  }
+}
+
+.nav-pills {
+
+  .nav-link {
+    @include btn-shadow($gray-800);
+    border: 1px solid rgba(0, 0, 0, 0.6);
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+    color: #fff;
+
+    &:hover {
+      @include btn-shadow-inverse($gray-800);
+      border: 1px solid rgba(0, 0, 0, 0.6);
+    }
+  }
+
+  .nav-link.active,
+  .nav-link:hover {
+    background-color: transparent;
+    @include btn-shadow-inverse($gray-800);
+    border: 1px solid rgba(0, 0, 0, 0.6);
+  }
+
+  .nav-link.disabled,
+  .nav-link.disabled:hover {
+    @include btn-shadow($gray-800);
+    color: $nav-link-disabled-color;
+  }
+}
+
+.pagination {
+
+  .page-link {
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+    @include btn-shadow($gray-800);
+
+    &:hover {
+      @include btn-shadow-inverse($gray-800);
+      text-decoration: none;
+    }
+  }
+
+  .page-item.active .page-link {
+    @include btn-shadow-inverse($gray-800);
+  }
+
+  .page-item.disabled .page-link {
+    @include btn-shadow($gray-800);
+  }
+}
+
+.breadcrumb {
+  border: 1px solid rgba(0, 0, 0, 0.6);
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+  background-color: transparent;
+  @include btn-shadow($gray-800);
+
+  a,
+  a:hover {
+    color: #fff;
+  }
+}
+
+// Indicators ==================================================================
+
+.alert {
+
+  .close {
+    color: $close-color;
+    text-decoration: none;
+  }
+}
+
+.alert {
+  border: none;
+  color: $white;
+
+  a,
+  .alert-link {
+    color: #fff;
+    text-decoration: underline;
+  }
+
+  @each $color, $value in $theme-colors {
+    &-#{$color} {
+      background-color: $value;
+    }
+  }
+
+  &-light {
+    &,
+    & a:not(.btn),
+    & .alert-link {
+      color: $body-bg;
+    }
+  }
+}
+
+.badge {
+
+  &-success,
+  &-warning,
+  &-info {
+    color: $white;
+  }
+}
+
+// Progress bars ===============================================================
+
+// Containers ==================================================================
+
+.jumbotron {
+  border: 1px solid rgba(0, 0, 0, 0.6);
+}
+
+.list-group {
+
+  &-item:hover {
+    background-color: darken($gray-900, 5%);
+  }
+}
+
+// Modals ======================================================================
+.modal.fade.bottom .modal-dialog {
+    transition: transform .3s ease-out;
+    transform: translate(0,100%);
+}
+
+.modal.fade.bottom.show .modal-dialog {
+    transform: none;
+}
+
+.modal-header .close {
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    margin: -0.333rem 0rem -0.5rem -0.5rem;
+    border-radius: $btn-border-radius;
+    background: $red;
+}

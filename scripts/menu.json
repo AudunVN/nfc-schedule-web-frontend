@@ -1,0 +1,302 @@
+{
+    "user": {
+        "name": "Space"
+    },
+    "categories": [
+        {
+            "title": "Convention",
+            "order": 10,
+            "icon": "paw",
+            "description": "This category contains information about the convention itself, such as info about our theme and special guests for this year.",
+            "items": [
+                {
+                    "title": "Atmosphere",
+                    "url": "https://nordicfuzzcon.org",
+                    "order": 10
+                },
+                {
+                    "title": "Theme Introduction",
+                    "url": "https://nordicfuzzcon.org",
+                    "order": 20
+                },
+                {
+                    "title": "Charity",
+                    "url": "https://nordicfuzzcon.org",
+                    "order": 30
+                },
+                {
+                    "title": "Guest of Honour",
+                    "url": "https://nordicfuzzcon.org",
+                    "order": 40
+                },
+                {
+                    "title": "Northern Light",
+                    "url": "https://nordicfuzzcon.org",
+                    "order": 50
+                },
+                {
+                    "title": "Mausie & Iris",
+                    "url": "https://nordicfuzzcon.org",
+                    "order": 60
+                },
+                {
+                    "title": "Dealers' Den",
+                    "url": "https://nordicfuzzcon.org",
+                    "order": 70
+                },
+                {
+                    "title": "Dealer list",
+                    "url": "https://nordicfuzzcon.org",
+                    "order": 80
+                },
+                {
+                    "title": "Gallery",
+                    "url": "https://galleries.nordicfuzzcon.org",
+                    "order": 90
+                },
+                {
+                    "title": "What the Fuzz?!",
+                    "url": "https://nordicfuzzcon.org",
+                    "order": 100
+                }
+            ]
+        },
+        {
+            "title": "Attending",
+            "order": 20,
+            "icon": "drivers-license",
+            "description": "Find important information about how to attend the convention, like ticket and hotel room prices plus current room slot and product availability.",
+            "items": [
+                {
+                    "title": "General Information",
+                    "url": "https://nordicfuzzcon.org",
+                    "order": 10
+                },
+                {
+                    "title": "Availability",
+                    "url": "https://nordicfuzzcon.org",
+                    "order": 20
+                },
+                {
+                    "title": "Room Sharing",
+                    "url": "https://nordicfuzzcon.org",
+                    "order": 30
+                },
+                {
+                    "title": "Travel Information",
+                    "url": "https://nordicfuzzcon.org",
+                    "order": 40
+                },
+                {
+                    "title": "Help Wanted",
+                    "url": "https://nordicfuzzcon.org",
+                    "order": 50
+                },
+                {
+                    "title": "Policies",
+                    "url": "https://nordicfuzzcon.org",
+                    "order": 60
+                },
+                {
+                    "title": "Forum",
+                    "url": "https://forum.nordicfuzzcon.org/",
+                    "order": 70
+                }
+            ]
+        },
+        {
+            "title": "Program",
+            "order": 30,
+            "icon": "calendar",
+            "description": "Find out what's happening at NFC this year! The full schedule will be released closer to the beginning of the convention.",
+            "items": [
+                {
+                    "title": "Schedule",
+                    "url": "https://nordicfuzzcon.org",
+                    "order": 10
+                },
+                {
+                    "title": "Café",
+                    "url": "https://nordicfuzzcon.org",
+                    "order": 20
+                },
+                {
+                    "title": "Haunted House",
+                    "url": "https://nordicfuzzcon.org",
+                    "order": 30
+                },
+                {
+                    "title": "Charity Concert",
+                    "url": "https://nordicfuzzcon.org",
+                    "order": 40
+                },
+                {
+                    "title": "Opening and Closing Ceremonies",
+                    "url": "https://nordicfuzzcon.org",
+                    "order": 50
+                }
+            ]
+        },
+        {
+            "title": "Venue",
+            "order": 40,
+            "icon": "home",
+            "description": "Find more information about our new main venue, the Clarion Hotel & Congress Malmö Live.",
+            "items": [
+                {
+                    "title": "General info",
+                    "url": "https://nordicfuzzcon.org",
+                    "order": 10
+                },
+                {
+                    "title": "Map",
+                    "url": "https://nordicfuzzcon.org",
+                    "order": 20
+                },
+                {
+                    "title": "Hotel Rooms",
+                    "url": "https://nordicfuzzcon.org",
+                    "order": 30
+                },
+                {
+                    "title": "Hotel FAQ",
+                    "url": "https://nordicfuzzcon.org",
+                    "order": 40
+                },
+                {
+                    "title": "Quiet Floors",
+                    "url": "https://nordicfuzzcon.org",
+                    "order": 50
+                },
+                {
+                    "title": "Buffer Floors",
+                    "url": "https://nordicfuzzcon.org",
+                    "order": 60
+                },
+                {
+                    "title": "Party Wing",
+                    "url": "https://nordicfuzzcon.org",
+                    "order": 70
+                }
+            ]
+        },
+        {
+            "title": "Hotels",
+            "order": 50,
+            "icon": "hotel",
+            "description": "Find more information about the rooms and amenities available at our different hotels.",
+            "items": [
+                {
+                    "title": "Clarion Hotel Malmö Live 1",
+                    "url": "https://nordicfuzzcon.org",
+                    "order": 10
+                },
+                {
+                    "title": "Clarion Hotel Malmö Live 2",
+                    "url": "https://nordicfuzzcon.org",
+                    "order": 20
+                },
+                {
+                    "title": "Clarion Hotel Malmö Live 3",
+                    "url": "https://nordicfuzzcon.org",
+                    "order": 30
+                },
+                {
+                    "title": "Clarion Hotel Malmö Live 4",
+                    "url": "https://nordicfuzzcon.org",
+                    "order": 40
+                },
+                {
+                    "title": "Clarion Hotel Malmö Live 5",
+                    "url": "https://nordicfuzzcon.org",
+                    "order": 50
+                }
+            ]
+        },
+        {
+            "title": "Games",
+            "order": 60,
+            "icon": "gamepad",
+            "description": "NordicFuzzCon is known for its many games and fun things to do during the con; find out more about them here!",
+            "items": [
+                {
+                    "title": "Arcade",
+                    "url": "https://nordicfuzzcon.org",
+                    "order": 10
+                },
+                {
+                    "title": "Board Games",
+                    "url": "https://nordicfuzzcon.org",
+                    "order": 20
+                },
+                {
+                    "title": "Tabletop Role Playing Games",
+                    "url": "https://nordicfuzzcon.org",
+                    "order": 30
+                },
+                {
+                    "title": "Fursuits - Gotta Catch 'Em All",
+                    "url": "https://nordicfuzzcon.org",
+                    "category": "Gaming",
+                    "order": 40
+                },
+                {
+                    "title": "Achievement Hunting",
+                    "url": "https://nordicfuzzcon.org",
+                    "order": 50
+                }
+            ]
+        },
+        {
+            "title": "Statistics",
+            "order": 70,
+            "icon": "bar-chart",
+            "description": "Here you can see who's attending, the species distribution, fursuit list and various other NFC-related statistics for this year.",
+            "items": [
+                {
+                    "title": "Overview",
+                    "url": "https://nordicfuzzcon.org",
+                    "order": 10
+                },
+                {
+                    "title": "Attendee List",
+                    "url": "https://nordicfuzzcon.org",
+                    "order": 20
+                },
+                {
+                    "title": "Fursuit List",
+                    "url": "https://nordicfuzzcon.org",
+                    "order": 30
+                }
+            ]
+        },
+        {
+            "title": "About",
+            "order": 80,
+            "icon": "question-circle",
+            "description": "Get more general information about the convention, such as contact addresses, pictures from previous years and open positions.",
+            "items": [
+                {
+                    "title": "What Is NordicFuzzCon?",
+                    "url": "https://nordicfuzzcon.org",
+                    "order": 10
+                },
+                {
+                    "title": "About Furries",
+                    "url": "https://nordicfuzzcon.org",
+                    "order": 20
+                },
+                {
+                    "title": "Furry Conventions Around the World",
+                    "url": "https://nordicfuzzcon.org",
+                    "order": 30
+                },
+                {
+                    "title": "Contact",
+                    "url": "https://nordicfuzzcon.org",
+                    "order": 60
+                }
+            ]
+        }
+    ]
+}
