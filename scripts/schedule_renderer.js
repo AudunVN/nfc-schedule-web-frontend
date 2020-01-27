@@ -37,9 +37,9 @@ var eventTagIcons = {
 	"operations": "icons8-clipboard-checklist",
 	"open_house": "fa fa-home",
 	"event_details_updated": "fa fa-exclamation-triangle",
-	"super_sponsor_queue": "", // FIXME: icon for VIP / Priority
-	"healthcare": "", // FIXME: icon for Spa or something
-	"physical_activity": "" // FIXME: icon for dumbbell or muscle
+	"super_sponsor_queue": "fa fa-user-plus",
+	"healthcare": "fa fa-heart-o",
+	"physical_activity": "fa fa-soccer-ball-o"
 }
 
 var currentSearch = "";
