@@ -8,7 +8,7 @@ var fallbackEventsURL = "/static/js/events.json";
 var defaultEventsURL = "https://games-api-staging.nordicfuzzcon.org/schedule/v1/events";
 var apiKey = "staging-read";
 
-if (window.location.href.indexOf("www.nordicfuzzcon.org") == -1) {
+if (window.location.href.indexOf("www.nordicfuzzcon.org") != -1) {
 	/* switch to production */
 	defaultEventsURL = "https://games-api.nordicfuzzcon.org/schedule/v1/events";
 	apiKey = "f18f8411-42ba-4587-aed0-90d55bcb3b49";
@@ -20,7 +20,7 @@ var eventTagIcons = {
 	"food": "fa fa-cutlery",
 	"meet_and_greet": "fa fa-handshake-o",
 	"panel": "fa fa-comments-o",
-	"theme": "fa fa-snowflake-o",
+	"theme": "icons8-spotlight",
 	"music": "fa fa-music",
 	"guest_of_honor": "fa fa-star",
 	"northern_light": "fa fa-star",
