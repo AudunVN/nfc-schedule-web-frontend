@@ -107,7 +107,7 @@ function renderSchedule(events) {
 		$(this).toggleClass("striped", !!(index & 1));
 	});
 
-	$(".event-tag-container .label").each(function(index) {
+	$(".event-tag-container .badge").each(function(index) {
 		$(this).attr("data-toggle", "tooltip");
 		$(this).attr("title", $(this).text());
 		$(this).tooltip({
