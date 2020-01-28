@@ -27,7 +27,7 @@
 	vertical-align: middle;
 }
 
-.striped {
+#schedule-output-container .table .striped {
 	background: #e9f4fb;
 }
 
