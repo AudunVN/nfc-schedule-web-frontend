@@ -8,7 +8,7 @@ var fallbackEventsURL = "/static/js/events.json";
 var defaultEventsURL = "https://games-api-staging.nordicfuzzcon.org/schedule/v1/events";
 var apiKey = "staging-read";
 
-if (window.location.href.indexOf("www.nordicfuzzcon.org") != -1) {
+if (window.location.href.indexOf("www.nordicfuzzcon.org") == -1) {
 	/* switch to production */
 	defaultEventsURL = "https://games-api.nordicfuzzcon.org/schedule/v1/events";
 	apiKey = "f18f8411-42ba-4587-aed0-90d55bcb3b49";
@@ -329,9 +329,9 @@ function search(input, day, category) {
 function getEventClasses(event) {
 	var classString = "";
 	if (event.title == "ConOps") {
-		classString = "conOpsEvent info";
+		classString = "conOpsEvent bg-info";
 	} else if (event.title == "Registration") {
-		classString = "registrationEvent success";
+		classString = "registrationEvent bg-success";
 	}
 	return classString;
 }

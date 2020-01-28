@@ -126,18 +126,18 @@
 	opacity: 1;
 }
 
-.tooltip.top .tooltip-arrow {
-	border-top-color: #64b3e8;
+.tooltip.bs-tooltip-top .arrow::before {
+	border-top-color: #64b3e8 !important;
 }
 
-.tooltip.bottom .tooltip-arrow {
-	border-bottom-color: #64b3e8;
+.tooltip.bs-tooltip-bottom .arrow::before {
+	border-bottom-color: #64b3e8 !important;
 }
 
-.tooltip.left .tooltip-arrow {
-	border-left-color: #64b3e8;
+.tooltip.bs-tooltip-left .arrow::before {
+	border-left-color: #64b3e8 !important;
 }
 
-.tooltip.right .tooltip-arrow {
-	border-right-color: #64b3e8;
+.tooltip.bs-tooltip-right .arrow::before {
+	border-right-color: #64b3e8 !important;
 }
