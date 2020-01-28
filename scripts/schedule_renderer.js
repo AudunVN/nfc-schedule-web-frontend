@@ -25,11 +25,12 @@ var eventTagIcons = {
 	"guest_of_honor": "fa fa-star",
 	"northern_light": "fa fa-star",
 	"shopping": "fa fa-shopping-bag",
-	"charity": "fa fa-ambulance", // FIXME: Change to a cat or several.
+	"charity": "icons8-cat",
 	"photo": "fa fa-camera-retro",
 	"art": "fa fa-picture-o",
-	"fursuit": "fa fa-paw",
+	"fursuit": "icons8-cat-head",
 	"dance": "icons8-dancing",
+	"photography": "fa fa-camera",
 	"gaming": "icons8-dice",
 	"performance": "icons8-dynamic-microphone",
 	"competition": "icons8-game-position",
@@ -37,9 +38,9 @@ var eventTagIcons = {
 	"operations": "icons8-clipboard-checklist",
 	"open_house": "fa fa-home",
 	"event_details_updated": "fa fa-exclamation-triangle",
-	"super_sponsor_queue": "fa fa-user-plus",
+	"super_sponsor_queue": "icons8-queue",
 	"healthcare": "fa fa-heart-o",
-	"physical_activity": "fa fa-soccer-ball-o"
+	"physical_activity": "icons8-exercise"
 }
 
 var currentSearch = "";
