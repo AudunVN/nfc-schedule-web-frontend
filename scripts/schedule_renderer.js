@@ -8,7 +8,7 @@ var fallbackEventsURL = "/static/js/events.json";
 var defaultEventsURL = "https://games-api-staging.nordicfuzzcon.org/schedule/v1/events";
 var apiKey = "staging-read";
 
-if (window.location.href.indexOf("www.nordicfuzzcon.org") != -1) {
+if (false && window.location.href.indexOf("www.nordicfuzzcon.org") != -1) {
 	/* switch to production */
 	defaultEventsURL = "https://games-api.nordicfuzzcon.org/schedule/v1/events";
 	apiKey = "f18f8411-42ba-4587-aed0-90d55bcb3b49";
@@ -22,8 +22,8 @@ var eventTagIcons = {
 	"panel": "fa fa-comments-o",
 	"theme": "icons8-spotlight",
 	"music": "fa fa-music",
-	"guest_of_honor": "fa fa-star",
-	"northern_light": "fa fa-star",
+	"guest_of_honor": "fa fa-user-circle-o",
+	"northern_light": "fa fa-user-circle-o",
 	"shopping": "fa fa-shopping-bag",
 	"charity": "icons8-cat",
 	"photo": "fa fa-camera-retro",
@@ -40,7 +40,9 @@ var eventTagIcons = {
 	"event_details_updated": "fa fa-exclamation-triangle",
 	"super_sponsor_queue": "icons8-queue",
 	"healthcare": "fa fa-heart-o",
-	"physical_activity": "icons8-exercise"
+	"physical_activity": "icons8-exercise",
+	"star": "fa fa-star",
+	"guest_event": "fa fa-users"
 }
 
 var currentSearch = "";
@@ -79,15 +81,11 @@ function renderSchedule(events) {
 
 		eventElement.click(event, function(e){
 			var event = e.data;
-			if (event.title == "Registration") {
-				event.description = "";
-			}
 			var dialogContents = "<div class='row'>" + 
 			"<div class='col-sm-6'><h4>Start time</h4><p>" + moment(event.startTime).tz(timezone).format("dddd[, ]HH:mm")  + "</p></div>" +
 			"<div class='col-sm-6'><h4>End time</h4><p>" + moment(event.endTime).tz(timezone).format("dddd[, ]HH:mm")  + "</p></div></div>" + 
 			"<div class='row'><div class='col-sm-6'><h4>Location</h4><p>" + event.location  + "</p></div>";
 			if (event.eventTags && event.eventTags.length > 0) {
-				
 				dialogContents += "<div class='col-sm-6'><h4>Categories</h4><p>" + renderTagsToLabels(event.eventTags, true)  + "</p></div>";
 			}
 			dialogContents += "</div>";
@@ -166,7 +164,7 @@ function initializeFiltering(events) {
 	'<div class="form-group">' +
 		'<label class="control-label" for="event-filter-input">Category </label>' +
 		'<div class="btn-container category-options-container btn-group-toggle" data-toggle="buttons">' +
-		'<label class="btn btn-primary no-fullwidth-btn btn-sm active">' +
+		'<label class="btn btn-info no-fullwidth-btn btn-sm active">' +
 			'<input type="radio" name="filter-options" id="category_all" autocomplete="off" checked> All categories' +
 		'</label> ';
 		for (var i = 0; i < tagArray.length; i++) {
@@ -177,7 +175,7 @@ function initializeFiltering(events) {
 				}
 				var tag = tagArray[i].charAt(0).toUpperCase() + tagArray[i].slice(1);
 				tagFilter += '' +
-				'<label class="btn btn-primary no-fullwidth-btn btn-sm">' +
+				'<label class="btn btn-info no-fullwidth-btn btn-sm">' +
 					tagIcon +
 					'<input type="radio" name="filter-options" id="category_' + tagArray[i] + '" autocomplete="off">' +
 					tag.replace(/_/g, " ") + 
@@ -194,12 +192,12 @@ function initializeFiltering(events) {
 	'<div class="form-group">' +
 		'<label class="control-label" for="event-filter-input">Day </label>' +
 		'<div class="btn-container day-options-container btn-group-toggle" data-toggle="buttons">' +
-		'<label class="btn btn-primary no-fullwidth-btn btn-sm active">' +
+		'<label class="btn btn-info no-fullwidth-btn btn-sm active">' +
 			'<input type="radio" name="filter-day" id="day_all" autocomplete="off" checked> All days' +
 		'</label> ';
 		for (var i = 0; i < dayArray.length; i++) {
 			dayFilter += '' +
-			'<label class="btn btn-primary no-fullwidth-btn btn-sm">' +
+			'<label class="btn btn-info no-fullwidth-btn btn-sm">' +
 				'<input type="radio" name="filter-day" id="day_' + dayArray[i].toLowerCase() + '" autocomplete="off">' +
 				dayArray[i] + 
 			'</label> ';
@@ -330,8 +328,12 @@ function search(input, day, category) {
 function getEventClasses(event) {
 	var classString = "";
 	if (event.title == "ConOps") {
-		classString = "conOpsEvent bg-info";
-	} else if (event.title == "Registration") {
+		classString = "conOpsEvent bg-primary";
+	} else if (
+		   event.title == "Registration"
+		|| event.title == "Registration Office"
+		|| event.title == "Opening Registration"
+	) {
 		classString = "registrationEvent bg-success";
 	}
 	return classString;
@@ -364,7 +366,7 @@ function renderTagsToLabels(tagArray, showLabels) {
 					textClassString += " sr-only";
 				}
 			}
-			var labelClass = "badge-primary";
+			var labelClass = "badge-info";
 			if (tagArray[i] == "event_details_updated") {
 				labelClass = "badge-warning";
 			}

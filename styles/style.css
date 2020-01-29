@@ -2,13 +2,30 @@
     margin-bottom: 0;
 }
 
+#schedule-output-container .btn {
+	cursor: pointer;
+}
+
+#schedule-output-container .btn-container .btn.active {
+    box-shadow: 0 0 0.15em 0.1em #559eb5;
+}
+
+#schedule-output-container [class*="icons8"] {
+    text-shadow: none !important;
+}
+
 .tag_main {
 	display: none !important;
 }
 
+#schedule-output-container .btn-container > * {
+	margin-bottom: 0.45em;
+	text-shadow: 1px 1px 1px rgba(0,0,0,.3), 0 0 0.4em rgba(0,0,0,0.3);
+}
+
 #schedule-output-container .table tr {
 	cursor: pointer;
-	font-size: 1.15em;
+	font-size: 1em;
 }
 
 #schedule-output-container .table td:nth-child(1) {
@@ -38,12 +55,20 @@
 	color: white;
 }
 
-#schedule-output-container .table .registrationEvent .label {
+#schedule-output-container .table .registrationEvent .badge {
     background: hsl(204, 67%, 44%);
 }
 
 #schedule-output-container .event-tag-container {
 	margin-left: 0.3em;
+}
+
+.modal .event-tag-container > * {
+    color: #1e1e1e !important;
+}
+
+.modal .event-tag-container [class*="icons8"] {
+    text-shadow: none !important;
 }
 
 .event-tag-container .badge {
