@@ -3,6 +3,8 @@ var dateTimeInputFormat = "YYYY-MM-DD[T]HH:mm:ss[Z]";
 var timezone = "Europe/Stockholm";
 var scheduleContainerSelector = "#schedule-output-container";
 
+var longEventTreshold = 24; // hours before event is hidden
+
 var fallbackEventsURL = "/static/js/events.json";
 
 var defaultEventsURL = "https://games-api-staging.nordicfuzzcon.org/schedule/v1/events";
@@ -48,6 +50,7 @@ var eventTagIcons = {
 var currentSearch = "";
 var selectedDay = "all";
 var selectedCategory = "all";
+var longEventTable = $("<table class='table table-hover table-striped day-table day-multiple'></table>");
 
 moment.tz.setDefault(timezone);
 
@@ -71,7 +74,7 @@ function renderSchedule(events) {
 		if (currentStartDay != previousStartDay) {
 			$(scheduleContainerSelector).append(currentTable);
 			$(scheduleContainerSelector).append("<h3 class='day-title day-" + currentStartDay.toLowerCase() +"'>" + moment(event.startTime).tz(timezone).format("dddd[, ]MMMM Do") + "</h3>");
-			var currentTable = $("<table class='table table-hover table-striped day-table day-" + currentStartDay.toLowerCase() + "'></table>");
+			currentTable = $("<table class='table table-hover table-striped day-table day-" + currentStartDay.toLowerCase() + "'></table>");
 			previousStartDay = currentStartDay;
 		}
 
@@ -92,14 +95,28 @@ function renderSchedule(events) {
 			if (event.description != "" && event.description.length > 5) {
 				dialogContents += "<h4>Description</h4><p style='white-space: pre-wrap;'>" + event.description  + "</p>";
 			}
+			
+			$("[data-toggle='tooltip']").tooltip('hide');
 			showDialog(event.title, dialogContents);
 		});
 
-		currentTable.append(eventElement);
+		// event length in hours
+		var eventLength = Math.abs(Date.parse(event.startTime) - Date.parse(event.endTime)) / (60*60*1000);
+
+		if (eventLength > longEventTreshold) {
+			eventElement.addClass("multiday-event");
+			longEventTable.append(eventElement);
+		} else {
+			currentTable.append(eventElement);
+		}
 	}
 	$(scheduleContainerSelector).append(currentTable);
-	initializeFiltering(events);
 
+	$(scheduleContainerSelector).prepend(longEventTable);
+	$(scheduleContainerSelector).prepend("<h3 class='day-title day-multiple'>Multiple days</h3>");
+	
+	initializeFiltering(events);
+	
 	$(".day-table.table-striped").removeClass("table-striped");
 
 	$(".day-table tr").each(function(index) {
@@ -386,7 +403,7 @@ function eventToHtml(event) {
 	
 	var eventHTML = "<tr>" + 
 	"<td>"  + event.title + " " + renderTagsToLabels(event.eventTags) + "</td>" +
-	"<td>" + moment(event.startTime).tz(timezone).format("HH:mm") + "<span class='separator-desktop'> - </span><span class='separator-mobile'><br></span>" + moment(event.endTime).tz(timezone).format("HH:mm") + " " + renderTagsToLabels(event.eventTags) +  "</td>" +
+	"<td><span class='event-day-label'>" + moment(event.startTime).tz(timezone).format("ddd") + " </span>" + moment(event.startTime).tz(timezone).format("HH:mm") + "<span class='separator-desktop'> - </span><span class='separator-mobile'><br></span><span class='event-day-label'>" + moment(event.endTime).tz(timezone).format("ddd") + " </span>" + moment(event.endTime).tz(timezone).format("HH:mm") + " " + renderTagsToLabels(event.eventTags) +  "</td>" +
 	"<td>" + locationString + "</td>";
 	return eventHTML;
 }
