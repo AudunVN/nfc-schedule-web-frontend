@@ -95,7 +95,7 @@ function renderSchedule(events) {
 			if (event.description != "" && event.description.length > 5) {
 				dialogContents += "<h4>Description</h4><p style='white-space: pre-wrap;'>" + event.description  + "</p>";
 			}
-			
+
 			$("[data-toggle='tooltip']").tooltip('hide');
 			showDialog(event.title, dialogContents);
 		});
@@ -345,13 +345,13 @@ function search(input, day, category) {
 function getEventClasses(event) {
 	var classString = "";
 	if (event.title == "ConOps") {
-		classString = "conOpsEvent bg-primary";
+		classString = "conOpsEvent table-primary";
 	} else if (
 		   event.title == "Registration"
 		|| event.title == "Registration Office"
 		|| event.title == "Opening Registration"
 	) {
-		classString = "registrationEvent bg-success";
+		classString = "registrationEvent table-success";
 	}
 	return classString;
 }
