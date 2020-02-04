@@ -10,7 +10,7 @@ var fallbackEventsURL = "/static/js/events.json";
 var defaultEventsURL = "https://games-api-staging.nordicfuzzcon.org/schedule/v1/events";
 var apiKey = "staging-read";
 
-if (false && window.location.href.indexOf("www.nordicfuzzcon.org") != -1) {
+if (window.location.href.indexOf("www.nordicfuzzcon.org") != -1) {
 	/* switch to production */
 	defaultEventsURL = "https://games-api.nordicfuzzcon.org/schedule/v1/events";
 	apiKey = "f18f8411-42ba-4587-aed0-90d55bcb3b49";
